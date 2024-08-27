@@ -1,3 +1,9 @@
+# obs-source-manager
+
+react-based UI that lets you easily select sources based on the groups in and then record separate files for each selected source.
+
+[https://www.npmjs.com/package/oss-attribution-generator/v/1.5.0](https://www.npmjs.com/package/oss-attribution-generator/v/1.5.0) is used to generate attribution information
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -43,4 +49,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# To learn React, check out the [React documentation](https://reactjs.org/).
