@@ -82,6 +82,14 @@ function App() {
           {connectionInfo.password ? connectionInfo.password : "Not set"}
         </p>
       </div>
+      <footer>
+        <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/LICENSE.txt">
+          License
+        </a>
+        <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/oss-attribution/attribution.txt">
+          3rd party atributions
+        </a>
+      </footer>
     </>
   );
 }
