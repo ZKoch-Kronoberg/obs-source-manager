@@ -1,21 +1,18 @@
-import React, { useCallback, useEffect, useState } from "react";
-import logo from "./logo.svg";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
-import Modal from "react-modal";
 import ConnectionModal from "./components/ConnectionModal";
 import OBSWebSocket, { OBSWebSocketError } from "obs-websocket-js";
+import { ConnectionInfo } from "./shared";
+import { OBSConnectionProvider } from "./contexts/OBSConnectionContext";
+import SceneView from "./components/sceneView";
 
 function App() {
   //STATE
   //connection info
-  const [connectionInfo, setConnectionInfo] = useState<{
-    url: string;
-    password: string;
-  }>({
+  const [connectionInfo, setConnectionInfo] = useState<ConnectionInfo>({
     url: "ws://localhost:4455",
     password: "",
   });
-  // Updated handler
   const HandleConnectionInfoSave = useCallback(
     (wsPort: string, wsPassword: string) => {
       setConnectionInfo({
@@ -36,34 +33,6 @@ function App() {
   }
 
   //OBS connection
-  const [connection, setConnection] = useState<OBSWebSocket>();
-
-  //USEFFECTS
-  useEffect(() => {
-    const connectToOBS = async () => {
-      try {
-        const obs = new OBSWebSocket();
-        await obs.connect(connectionInfo.url, connectionInfo.password);
-        setConnection(obs);
-      } catch (error) {
-        if (error instanceof OBSWebSocketError) {
-          console.error("Failed to connect to OBS:", error.message);
-        } else {
-          console.error("Unexpected error:", error);
-        }
-      }
-    };
-    console.log(connectionInfo);
-    connectToOBS();
-
-    //cleanup function
-    return () => {
-      if (connection) {
-        connection.disconnect();
-        console.log("Disconnected from OBS WebSocket");
-      }
-    };
-  }, [connectionInfo]);
 
   return (
     <>
@@ -82,6 +51,8 @@ function App() {
           {connectionInfo.password ? connectionInfo.password : "Not set"}
         </p>
       </div>
+      <OBSConnectionProvider connectionInfo={connectionInfo}>
+      </OBSConnectionProvider>
       <footer>
         <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/LICENSE.txt">
           License
