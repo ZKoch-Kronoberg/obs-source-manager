@@ -68,7 +68,7 @@ const SceneView: FunctionComponent<SceneViewProps> = () => {
           <h2>Master Scene: {masterScene.name}</h2>
           <ul>
             {masterScene.subSceneNames.map((subSceneName) => (
-              <li>{subSceneName}</li>
+              <li key={subSceneName}>{subSceneName}</li>
             ))}
           </ul>
         </div>
