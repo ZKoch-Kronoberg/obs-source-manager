@@ -4,7 +4,7 @@ import ConnectionModal from "./components/ConnectionModal";
 import OBSWebSocket, { OBSWebSocketError } from "obs-websocket-js";
 import { ConnectionInfo } from "./shared";
 import { OBSConnectionProvider } from "./contexts/OBSConnectionContext";
-import SceneView from "./components/sceneView";
+import SceneView from "./components/SceneView";
 
 function App() {
   //STATE
@@ -52,6 +52,7 @@ function App() {
         </p>
       </div>
       <OBSConnectionProvider connectionInfo={connectionInfo}>
+        <SceneView></SceneView>
       </OBSConnectionProvider>
       <footer>
         <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/LICENSE.txt">
