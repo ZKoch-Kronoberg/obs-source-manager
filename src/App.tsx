@@ -5,6 +5,8 @@ import OBSWebSocket, { OBSWebSocketError } from "obs-websocket-js";
 import { ConnectionInfo } from "./shared";
 import { OBSConnectionProvider } from "./contexts/OBSConnectionContext";
 import SceneView from "./components/SceneView";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   //STATE
@@ -62,6 +64,7 @@ function App() {
           3rd party atributions
         </a>
       </footer>
+      <ToastContainer position="top-right" />
     </>
   );
 }

@@ -7,6 +7,7 @@ import {
   useState,
 } from "react";
 import { ConnectionInfo } from "../shared";
+import { toast } from "react-toastify";
 
 interface OBSConnectionContextType {
   connection: OBSWebSocket | null;
@@ -34,6 +35,7 @@ export const OBSConnectionProvider: React.FC<OBSConnectionProviderProps> = ({
 
     const connectToOBS = async () => {
       if (connectionInfo) {
+        //this doesn't seem to trigger and I don't remember what the idea was
         if (obs) {
           obs.disconnect();
           console.log("Disconnected from previous OBS WebSocket");
@@ -43,16 +45,18 @@ export const OBSConnectionProvider: React.FC<OBSConnectionProviderProps> = ({
           await obs.connect(connectionInfo.url, connectionInfo.password);
           setConnection(obs);
           console.log("Connected to OBS WebSocket");
+          toast.info("Connected to OBS WebSocket");
         } catch (error) {
           if (error instanceof OBSWebSocketError) {
             console.error("Failed to connect to OBS:", error.message);
+            toast.error(`Failed to connect to OBS:${error.message}`);
           } else {
             console.error("Unexpected error:", error);
+            toast.error("An unexpected error occured");
           }
         }
       }
     };
-
     connectToOBS();
 
     // Cleanup function to disconnect on unmount or when connectionInfo changes
@@ -60,6 +64,7 @@ export const OBSConnectionProvider: React.FC<OBSConnectionProviderProps> = ({
       if (obs) {
         obs.disconnect();
         console.log("Disconnected from OBS WebSocket");
+        toast.info("Disconnected from OBS WebSocket");
       }
     };
   }, [connectionInfo]);

@@ -1,6 +1,8 @@
 import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { OBSConnectionContext } from "../contexts/OBSConnectionContext";
 import { OBSResponseTypes, OBSWebSocketError } from "obs-websocket-js";
+import { toast } from "react-toastify";
+import { Toast } from "react-toastify/dist/components";
 
 interface SceneViewProps {}
 
@@ -21,16 +23,18 @@ const SceneView: FunctionComponent<SceneViewProps> = () => {
           throw new Error("couldn't connect to webSocket");
         }
 
-        const currentScene = await connection.call("GetCurrentProgramScene");
-        if (!currentScene.currentProgramSceneName) {
+        const currentSceneName = (
+          await connection.call("GetCurrentProgramScene")
+        ).currentProgramSceneName;
+        if (!currentSceneName) {
           throw new Error("couldn't get name of current scene");
           /*I don't think this should be able to happen according to ts but
               it doesn't hurt to validate*/
         }
-        console.log("currentScene:", currentScene);
+        console.log("currentScene:", currentSceneName);
 
         const contents = await connection.call("GetSceneItemList", {
-          sceneName: currentScene.currentProgramSceneName,
+          sceneName: currentSceneName,
         });
         console.log("contents:", contents);
         //filter to only the sceneItems that are a scene source
@@ -42,19 +46,27 @@ const SceneView: FunctionComponent<SceneViewProps> = () => {
           throw new Error("Could not detect any subscenes");
         }
 
+        //all checks were cleared, set the state
         const subSceneNames = subScenes.map(
           (subscene) => subscene.sourceName as string
         );
-        console.log("Master Scene:", {
-          name: currentScene.currentProgramSceneName,
+        const result: masterScene = {
+          name: currentSceneName,
           subSceneNames: subSceneNames,
-        });
+        };
         setMasterScene({
-          name: currentScene.currentProgramSceneName,
+          name: currentSceneName,
           subSceneNames: subSceneNames,
         });
+        toast.success("Your master scene has successfully been read");
       } catch (error) {
         console.error(error);
+
+        if (error instanceof Error) {
+          toast.error(`Error: ${error.message}`);
+        } else {
+          toast.error("An unexpected error occured");
+        }
       }
     };
 
