@@ -3,6 +3,7 @@ import { OBSConnectionContext } from "../contexts/OBSConnectionContext";
 import { OBSResponseTypes, OBSWebSocketError } from "obs-websocket-js";
 import { toast } from "react-toastify";
 import { Toast } from "react-toastify/dist/components";
+import SubScene from "./SubScene";
 
 interface SceneViewProps {}
 
@@ -80,7 +81,7 @@ const SceneView: FunctionComponent<SceneViewProps> = () => {
           <h2>Master Scene: {masterScene.name}</h2>
           <ul>
             {masterScene.subSceneNames.map((subSceneName) => (
-              <li key={subSceneName}>{subSceneName}</li>
+              <SubScene name={subSceneName} key={subSceneName}></SubScene>
             ))}
           </ul>
         </div>
