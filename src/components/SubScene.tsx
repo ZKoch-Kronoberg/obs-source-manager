@@ -37,7 +37,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
           );
         }
 
-        console.log("sources in event handler:", sources);
+        //console.log("sources in event handler:", sources);
 
         //find source with id matching event's
         const changedSource = sources.find(
@@ -74,7 +74,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
           return source;
         });
 
-        console.log("updatedSources:", updatedSources);
+        //console.log("updatedSources:", updatedSources);
 
         setSources(updatedSources);
       } catch (error) {
@@ -194,10 +194,48 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
     []
   );
 
+  const SetAllSourcesEnabled = useCallback(
+    async (value: boolean) => {
+      try {
+        if (!connection) {
+          throw new Error("could not connect to webSocket");
+        }
+
+        if (!sources) {
+          throw new Error(
+            `could not load sources list in nested scene ${name}`
+          );
+        }
+
+        for (const source of sources) {
+          connection.call("SetSceneItemEnabled", {
+            sceneName: source.sceneName,
+            sceneItemId: source.sceneItemId,
+            sceneItemEnabled: value,
+          });
+        }
+      } catch (error) {
+        console.error(error);
+
+        if (error instanceof Error) {
+          toast.error(`Error: ${error.message}`);
+        } else {
+          toast.error("An unexpected error occured");
+        }
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [sources]
+  );
+
   // apply this https://inclusive-components.design/a-todo-list/ to both this conponent and sceneview
   return (
     <li>
-      <h3>{name}</h3>
+      <div>
+        <h3>{name}</h3>
+        <button onClick={() => SetAllSourcesEnabled(true)}>Enable all</button>
+        <button onClick={() => SetAllSourcesEnabled(false)}>Disable all</button>
+      </div>
       {sources ? (
         <ul>
           {sources.map((source) => (
