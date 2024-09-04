@@ -2,7 +2,7 @@ const { OBSWebSocket } = require("obs-websocket-js");
 const obs = new OBSWebSocket();
 
 obs
-  .connect("ws://localhost:4455", "1umsXp9YDxvgUI2w")
+  .connect("ws://localhost:4455", "")
   .then(() => {
     console.log("Connected to OBS WebSocket");
     return obs.call("GetSceneList");

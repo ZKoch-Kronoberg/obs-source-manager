@@ -1,8 +1,6 @@
 import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { OBSConnectionContext } from "../contexts/OBSConnectionContext";
-import { OBSResponseTypes, OBSWebSocketError } from "obs-websocket-js";
 import { toast } from "react-toastify";
-import { Toast } from "react-toastify/dist/components";
 import SubScene from "./SubScene";
 
 interface SceneViewProps {}
@@ -44,17 +42,13 @@ const SceneView: FunctionComponent<SceneViewProps> = () => {
         );
         console.log("subScenes:", subScenes);
         if (subScenes.length < 1) {
-          throw new Error("Could not detect any subscenes");
+          throw new Error("Could not detect any nested scenes");
         }
 
         //all checks were cleared, set the state
         const subSceneNames = subScenes.map(
           (subscene) => subscene.sourceName as string
         );
-        const result: masterScene = {
-          name: currentSceneName,
-          subSceneNames: subSceneNames,
-        };
         setMasterScene({
           name: currentSceneName,
           subSceneNames: subSceneNames,

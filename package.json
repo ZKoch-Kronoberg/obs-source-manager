@@ -31,7 +31,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+    "no-cond-assign": ["error", "always"]
+    }
   },
   "browserslist": {
     "production": [

@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import "./App.css";
 import ConnectionModal from "./components/ConnectionModal";
-import OBSWebSocket, { OBSWebSocketError } from "obs-websocket-js";
 import { ConnectionInfo } from "./shared";
 import { OBSConnectionProvider } from "./contexts/OBSConnectionContext";
 import SceneView from "./components/SceneView";
