@@ -207,12 +207,22 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
           );
         }
 
+        console.log("setting all");
+
         for (const source of sources) {
+          console.log(`setting ${source.sourceName} to: ${true}`);
           connection.call("SetSceneItemEnabled", {
             sceneName: source.sceneName,
             sceneItemId: source.sceneItemId,
             sceneItemEnabled: value,
           });
+
+          // can't rely on the event listener to update the control panel's state for me
+          const UpdatedSources = sources.map((source) => {
+            return { ...source, enabled: value };
+          });
+
+          setSources(UpdatedSources);
         }
       } catch (error) {
         console.error(error);
