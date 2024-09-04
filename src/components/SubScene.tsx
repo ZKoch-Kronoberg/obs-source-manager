@@ -20,44 +20,76 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
 
   const [sources, setSources] = useState<OBSSource[] | undefined>();
 
-  //!!THIS HAS TO BE USECALLBACK BC OF SOMETHING CALLED STALE CLOSURES
-  async function syncSourceEnabledChange(
-    event: OBSEventTypes["SceneItemEnableStateChanged"]
-  ) {
-    console.log(sources);
-    try {
-      if (!sources) {
-        throw new Error(`could not load sources list in nested scene ${name}`);
-      }
-      const changedSource = sources.find((source) => {
-        return source.sourceName === event.sceneName;
-      });
+  /*This creates one event listener per nested scene which isn't ideal but the
+    but the minor performance impact I expect in our usecase doesn't outweigh
+    the effort it'd take to move the listener to the master scene  */
+  const syncSourceEnabledChange = useCallback(
+    async (event: OBSEventTypes["SceneItemEnableStateChanged"]) => {
+      try {
+        //check if the event concerns this nested scene
+        if (event.sceneName !== name) {
+          return;
+        }
 
-      if (!changedSource) {
-        console.log("a");
-        return; // means the changed source wasn't in this subscene;
-      }
+        if (!sources) {
+          throw new Error(
+            `could not load sources list in nested scene ${name}`
+          );
+        }
 
-      if (!connection) {
-        throw new Error("could not connect to webSocket");
-      }
+        console.log("sources in event handler:", sources);
 
-      //update source record filter to match updated sceneItem
-      await connection.call("SetSourceFilterEnabled", {
-        sourceName: changedSource.sourceName,
-        filterName: "Source Record",
-        filterEnabled: event.sceneItemEnabled,
-      });
-    } catch (error) {
-      console.error(error);
+        //find source with id matching event's
+        const changedSource = sources.find(
+          (source) => source.sceneItemId === event.sceneItemId
+        );
+        if (!changedSource) {
+          throw new Error(
+            "could not find source corresponding to recived" +
+              "source visibility change event"
+          );
+        }
 
-      if (error instanceof Error) {
-        toast.error(`Error: ${error.message}`);
-      } else {
-        toast.error("An unexpected error occured");
+        if (!connection) {
+          throw new Error("could not connect to webSocket");
+        }
+
+        //update source record filter to match updated sceneItem
+        await connection.call("SetSourceFilterEnabled", {
+          sourceName: changedSource.sourceName,
+          filterName: "Source Record",
+          filterEnabled: event.sceneItemEnabled,
+        });
+
+        console.log(
+          `synced ${changedSource.sourceName} to ${event.sceneItemEnabled}`
+        );
+
+        /*generate copy of sources state with the enabled property of the
+        changed source updated*/
+        const updatedSources = sources.map((source) => {
+          if (source.sceneItemId === changedSource.sceneItemId) {
+            return { ...source, enabled: event.sceneItemEnabled };
+          }
+          return source;
+        });
+
+        console.log("updatedSources:", updatedSources);
+
+        setSources(updatedSources);
+      } catch (error) {
+        console.error(error);
+
+        if (error instanceof Error) {
+          toast.error(`Error: ${error.message}`);
+        } else {
+          toast.error("An unexpected error occured");
+        }
       }
-    }
-  }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [sources]
+  );
 
   //get current subscene's information
   useEffect(() => {
@@ -97,9 +129,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
           source.enabled = result.sceneItemEnabled;
         }
 
-        console.log("sources:", foundSources);
-
-        connection.on("SceneItemEnableStateChanged", syncSourceEnabledChange);
+        console.log("foundSources:", foundSources);
 
         setSources(foundSources);
       } catch (error) {
@@ -114,16 +144,17 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
     };
 
     getSources();
-    console.log("sources after setting:", sources);
+    //console.log("sources after setting:", sources);
 
     //cleanup function
     return () => {
       connection?.off("SceneItemEnableStateChanged", syncSourceEnabledChange);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [connection, name]);
 
   useEffect(() => {
-    console.log("Sources updated:", sources);
+    console.log("Sources updated to:", sources);
 
     if (sources && connection) {
       // Set up the event handler only if sources are available
@@ -134,7 +165,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
         connection.off("SceneItemEnableStateChanged", syncSourceEnabledChange);
       };
     }
-  }, [sources, connection]);
+  }, [sources, connection, syncSourceEnabledChange]);
 
   const setSourceEnabled = useCallback(
     async (source: OBSSource, value: boolean) => {
@@ -159,6 +190,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
       }
       return;
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
