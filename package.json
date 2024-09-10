@@ -33,7 +33,10 @@
       "react-app/jest"
     ],
     "rules": {
-    "no-cond-assign": ["error", "always"]
+      "no-cond-assign": [
+        "error",
+        "always"
+      ]
     }
   },
   "browserslist": {
