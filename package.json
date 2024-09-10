@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
-    "generate-license-file": "^3.5.1"
+    "generate-license-file": "^3.5.1",
+    "tailwindcss": "^3.4.10"
   }
 }
