@@ -1,7 +1,11 @@
-import OBSWebSocket, { OBSWebSocketError } from "obs-websocket-js";
+import OBSWebSocket, {
+  OBSEventTypes,
+  OBSWebSocketError,
+} from "obs-websocket-js";
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -11,10 +15,12 @@ import { toast } from "react-toastify";
 
 interface OBSConnectionContextType {
   connection: OBSWebSocket | null;
+  isRecording: boolean;
 }
 
 export const OBSConnectionContext = createContext<OBSConnectionContextType>({
   connection: null,
+  isRecording: false,
 });
 
 export const useOBSConnection = () => useContext(OBSConnectionContext);
@@ -29,6 +35,7 @@ export const OBSConnectionProvider: React.FC<OBSConnectionProviderProps> = ({
   children,
 }) => {
   const [connection, setConnection] = useState<OBSWebSocket | null>(null);
+  const [isRecording, setisRecording] = useState<boolean>(false);
 
   useEffect(() => {
     let obs: OBSWebSocket | null = null;
@@ -69,8 +76,40 @@ export const OBSConnectionProvider: React.FC<OBSConnectionProviderProps> = ({
     };
   }, [connectionInfo]);
 
+  const syncIsRecording = useCallback(
+    async (event: OBSEventTypes["RecordStateChanged"]) => {
+      console.log("event.outputActive:", event.outputActive);
+      setisRecording(event.outputActive);
+    },
+    []
+  );
+
+  useEffect(() => {
+    const getRecordingStatus = async () => {
+      if (!connection) {
+        console.log("can't get recording status yet, not connected");
+        return;
+      }
+
+      const result = await connection.call("GetRecordStatus");
+      console.log(result);
+      setisRecording(result.outputActive);
+      console.log("isRecording was set to:", result.outputActive);
+
+      connection.on("RecordStateChanged", syncIsRecording);
+    };
+
+    getRecordingStatus();
+    return () => {
+      connection?.off("RecordStateChanged", syncIsRecording);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [connection]);
+
   return (
-    <OBSConnectionContext.Provider value={{ connection: connection }}>
+    <OBSConnectionContext.Provider
+      value={{ connection: connection, isRecording: isRecording }}
+    >
       {children}
     </OBSConnectionContext.Provider>
   );

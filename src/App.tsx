@@ -6,6 +6,7 @@ import { OBSConnectionProvider } from "./contexts/OBSConnectionContext";
 import SceneView from "./components/SceneView";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RecordingControls from "./components/RecordingControls";
 
 function App() {
   //STATE
@@ -33,8 +34,6 @@ function App() {
     setModalIsOpen(false);
   }
 
-  //OBS connection
-
   return (
     <>
       <main className="w-full min-h-screen px-4 pt-4">
@@ -56,7 +55,8 @@ function App() {
           </p>
         </div>
         <OBSConnectionProvider connectionInfo={connectionInfo}>
-          <SceneView></SceneView>
+          <SceneView />
+          <RecordingControls />
         </OBSConnectionProvider>
       </main>
       <footer className="border-t-2 flex flex-row gap-x-2">
