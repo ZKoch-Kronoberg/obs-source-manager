@@ -13,9 +13,16 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
 
   return (
     <li>
-      <div>
-        {source.sourceName}: {source.enabled ? "enabled " : "disabled "}
-        <button onClick={toggleSourceEnabled}>toggle</button>
+      <div className="flex flex-col border-2 space-y-1 pb-2">
+        <span className="border-b-2 font-semibold px-2">
+          {source.sourceName}
+        </span>
+        <span className="px-2">
+          {source.enabled ? "enabled " : "disabled "}
+        </span>
+        <button className="border-2 m-2" onClick={toggleSourceEnabled}>
+          toggle
+        </button>
       </div>
     </li>
   );

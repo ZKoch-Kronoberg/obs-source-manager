@@ -28,11 +28,12 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
     >
-      <h2>Anslut</h2>
+      <h2 className="text-4xl mb-4">Anslut</h2>
       <form>
         <div>
-          <label htmlFor="wsURL">WebSocket Port:</label>
+          <label htmlFor="wsURL">WebSocket Port: </label>
           <input
+            className="border-2"
             id="wsURL"
             type="text"
             value={wsPort}
@@ -41,8 +42,9 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Password: </label>
           <input
+            className="border-2"
             id="password"
             type="password"
             value={password}
@@ -50,12 +52,14 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
             placeholder="Skriv lösenord"
           />
         </div>
-        <button type="button" onClick={handleSave}>
-          Spara
-        </button>
-        <button type="button" onClick={onClose}>
-          Stäng
-        </button>
+        <div className="flex flex-row gap-x-2">
+          <button className="border-2" type="button" onClick={handleSave}>
+            Spara
+          </button>
+          <button className="border-2" type="button" onClick={onClose}>
+            Stäng
+          </button>
+        </div>
       </form>
     </Modal>
   );

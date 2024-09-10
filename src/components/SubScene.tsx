@@ -240,14 +240,26 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
 
   // apply this https://inclusive-components.design/a-todo-list/ to both this conponent and sceneview
   return (
-    <li>
-      <div>
-        <h3>{name}</h3>
-        <button onClick={() => SetAllSourcesEnabled(true)}>Enable all</button>
-        <button onClick={() => SetAllSourcesEnabled(false)}>Disable all</button>
+    <li className="border-2">
+      <div className="flex flex-row flex-wrap gap-x-2 gap-y-1 p-1 border-b-2">
+        <h3 className="text-xl">{name}</h3>
+        <div className="flex flex-row flex-wrap gap-x-2 gap-y-1">
+          <button
+            className="border-2"
+            onClick={() => SetAllSourcesEnabled(true)}
+          >
+            Enable all
+          </button>
+          <button
+            className="border-2"
+            onClick={() => SetAllSourcesEnabled(false)}
+          >
+            Disable all
+          </button>
+        </div>
       </div>
       {sources ? (
-        <ul>
+        <ul className="flex flex-row flex-wrap gap-x-2 gap-y-1 p-2">
           {sources.map((source) => (
             <Source
               source={source}

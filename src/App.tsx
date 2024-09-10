@@ -37,25 +37,29 @@ function App() {
 
   return (
     <>
-      <h1>OBS Kontrollpanel</h1>
-      <button onClick={openModal}>öppna anslutningsinställningar</button>
-      <ConnectionModal
-        isOpen={modalIsOpen}
-        onClose={closeModal}
-        callback={HandleConnectionInfoSave}
-      ></ConnectionModal>
-      <div>
-        <h2>Current Connection Info</h2>
-        <p>WebSocket : {connectionInfo.url}</p>
-        <p>
-          Password:{" "}
-          {connectionInfo.password ? connectionInfo.password : "Not set"}
-        </p>
-      </div>
-      <OBSConnectionProvider connectionInfo={connectionInfo}>
-        <SceneView></SceneView>
-      </OBSConnectionProvider>
-      <footer>
+      <main className="w-full min-h-screen px-4 pt-4">
+        <h1 className="text-4xl mb-4">OBS Kontrollpanel</h1>
+        <button className="border-2 px-2" onClick={openModal}>
+          öppna anslutningsinställningar
+        </button>
+        <ConnectionModal
+          isOpen={modalIsOpen}
+          onClose={closeModal}
+          callback={HandleConnectionInfoSave}
+        ></ConnectionModal>
+        <div>
+          <h2 className="text-2xl">Current Connection Info</h2>
+          <p>WebSocket : {connectionInfo.url}</p>
+          <p>
+            Password:{" "}
+            {connectionInfo.password ? connectionInfo.password : "Not set"}
+          </p>
+        </div>
+        <OBSConnectionProvider connectionInfo={connectionInfo}>
+          <SceneView></SceneView>
+        </OBSConnectionProvider>
+      </main>
+      <footer className="border-t-2 flex flex-row gap-x-2">
         <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/LICENSE.txt">
           License
         </a>

@@ -72,8 +72,8 @@ const SceneView: FunctionComponent<SceneViewProps> = () => {
     <>
       {masterScene !== undefined ? (
         <div>
-          <h2>Master Scene: {masterScene.name}</h2>
-          <ul>
+          <h2 className="text-2xl mb-2">Master Scene: {masterScene.name}</h2>
+          <ul className="space-y-2">
             {masterScene.subSceneNames.map((subSceneName) => (
               <SubScene name={subSceneName} key={subSceneName}></SubScene>
             ))}
