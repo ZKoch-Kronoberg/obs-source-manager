@@ -1,5 +1,6 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import { OBSSource } from "../shared";
+import { OBSConnectionContext } from "../contexts/OBSConnectionContext";
 
 interface SourceProps {
   source: OBSSource;
@@ -7,6 +8,8 @@ interface SourceProps {
 }
 
 const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
+  const { isRecording } = useContext(OBSConnectionContext);
+
   function toggleSourceEnabled() {
     setEnabled(source, !source.enabled);
   }
@@ -20,7 +23,11 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
         <span className="px-2">
           {source.enabled ? "enabled " : "disabled "}
         </span>
-        <button className="border-2 m-2" onClick={toggleSourceEnabled}>
+        <button
+          disabled={isRecording}
+          className="border-2 m-2 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
+          onClick={toggleSourceEnabled}
+        >
           toggle
         </button>
       </div>

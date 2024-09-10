@@ -16,7 +16,7 @@ interface SubSceneProps {
 }
 
 const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
-  const { connection } = useContext(OBSConnectionContext);
+  const { connection, isRecording } = useContext(OBSConnectionContext);
 
   const [sources, setSources] = useState<OBSSource[] | undefined>();
 
@@ -245,13 +245,15 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
         <h3 className="text-xl">{name}</h3>
         <div className="flex flex-row flex-wrap gap-x-2 gap-y-1">
           <button
-            className="border-2"
+            disabled={isRecording}
+            className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
             onClick={() => SetAllSourcesEnabled(true)}
           >
             Enable all
           </button>
           <button
-            className="border-2"
+            disabled={isRecording}
+            className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
             onClick={() => SetAllSourcesEnabled(false)}
           >
             Disable all
