@@ -30,17 +30,17 @@ const SceneView: FunctionComponent<SceneViewProps> = () => {
           /*I don't think this should be able to happen according to ts but
               it doesn't hurt to validate*/
         }
-        console.log("currentScene:", currentSceneName);
+        //console.log("currentScene:", currentSceneName);
 
         const contents = await connection.call("GetSceneItemList", {
           sceneName: currentSceneName,
         });
-        console.log("contents:", contents);
+        //console.log("contents:", contents);
         //filter to only the sceneItems that are a scene source
         const subScenes = contents.sceneItems.filter(
           (sceneItem) => (sceneItem.sourceType = "OBS_SOURCE_TYPE_SCENE")
         );
-        console.log("subScenes:", subScenes);
+        //console.log("subScenes:", subScenes);
         if (subScenes.length < 1) {
           throw new Error("Could not detect any nested scenes");
         }

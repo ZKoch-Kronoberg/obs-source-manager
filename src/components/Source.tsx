@@ -11,6 +11,7 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
   const { isRecording } = useContext(OBSConnectionContext);
 
   function toggleSourceEnabled() {
+    //console.log(`toggling ${source.sourceName}`);
     setEnabled(source, !source.enabled);
   }
 

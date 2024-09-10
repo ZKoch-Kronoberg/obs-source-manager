@@ -151,7 +151,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
       connection?.off("SceneItemEnableStateChanged", syncSourceEnabledChange);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [connection, name]);
+  }, [connection, name]); //why did i feel the need to include name here?
 
   useEffect(() => {
     console.log("Sources updated to:", sources);
