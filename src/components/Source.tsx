@@ -20,6 +20,12 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
           throw new Error("could not connect to webSocket");
         }
 
+        if (!source.enabled) {
+          /*OBS won't render screenshots for a disabled source and throws an
+            an error*/
+          return;
+        }
+
         const response = await connection.call("GetSourceScreenshot", {
           sourceName: source.sourceName,
           imageFormat: "jpg",
@@ -39,7 +45,7 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
       }
     };
 
-    getPreviewImage()
+    getPreviewImage();
   }, [source, connection]);
 
   function toggleSourceEnabled() {
@@ -53,7 +59,13 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
         <span className="border-b-2 font-semibold px-2">
           {source.sourceName}
         </span>
-        {imageData? <img className="mx-2" src={`${imageData}`} alt={`preview of the video source ${source.sourceName}`} /> : null}
+        {imageData ? (
+          <img
+            className="mx-2"
+            src={`${imageData}`}
+            alt={`preview of the video source ${source.sourceName}`}
+          />
+        ) : null}
         <span className="px-2">
           {source.enabled ? "enabled " : "disabled "}
         </span>
