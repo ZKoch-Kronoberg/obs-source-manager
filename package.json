@@ -2,6 +2,7 @@
   "name": "obs-source-manager",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ZKoch-Kronoberg.github.io/obs-source-manager",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -11,6 +12,7 @@
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
     "@types/react-modal": "^3.16.3",
+    "gh-pages": "^6.1.1",
     "obs-websocket-js": "^5.0.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -25,7 +27,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "test-connect": "node src/scripts/test.js"
+    "test-connect": "node src/scripts/test.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
