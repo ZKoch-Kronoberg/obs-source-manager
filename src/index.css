@@ -4,6 +4,12 @@
 
 @layer base {
   body {
-    @apply bg-offWhite text-offBlack
+    @apply bg-offWhite text-offBlack;
+  }
+  a {
+    @apply text-blue-600;
+  }
+  p {
+    @apply mb-2;
   }
 }

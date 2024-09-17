@@ -7,6 +7,7 @@ import SceneView from "./components/SceneView";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RecordingControls from "./components/RecordingControls";
+import HelpModal from "./components/HelpModal";
 
 function App() {
   //STATE
@@ -25,33 +26,51 @@ function App() {
     []
   );
 
-  //modal openness
-  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  function openModal() {
-    setModalIsOpen(true);
+  //connection modal openness
+  const [connectionModalIsOpen, setConnectionModalIsOpen] =
+    useState<boolean>(false);
+  function openConnectionModal() {
+    setConnectionModalIsOpen(true);
   }
-  function closeModal() {
-    setModalIsOpen(false);
+  function closeConnectionModal() {
+    setConnectionModalIsOpen(false);
+  }
+
+  // modal openness
+  const [helpModalIsOpen, setHelpModalIsOpen] = useState<boolean>(false);
+  function openHelpModal() {
+    setHelpModalIsOpen(true);
+  }
+  function closeHelpModal() {
+    setHelpModalIsOpen(false);
   }
 
   return (
     <>
-      <main className="w-full min-h-screen px-4 pt-4">
-        <h1 className="text-4xl mb-4">OBS Kontrollpanel</h1>
-        <button className="border-2 px-2" onClick={openModal}>
-          öppna anslutningsinställningar
-        </button>
+      <main className="w-full min-h-screen max-h-full px-4 pt-4">
+        <h1 className="text-4xl mb-4">OBS Control panel</h1>
+        <div className="flex flex-row gap-x-2">
+          <button className="border-2 px-2" onClick={openConnectionModal}>
+            Open connection settings
+          </button>
+          <button className="border-2 px-2" onClick={openHelpModal}>
+            Help
+          </button>
+        </div>
         <ConnectionModal
-          isOpen={modalIsOpen}
-          onClose={closeModal}
+          isOpen={connectionModalIsOpen}
+          onClose={closeConnectionModal}
           callback={HandleConnectionInfoSave}
-        ></ConnectionModal>
+        />
+        <HelpModal isOpen={helpModalIsOpen} onClose={closeHelpModal} />
         <div>
           <h2 className="text-2xl">Current Connection Info</h2>
           <p>WebSocket : {connectionInfo.url}</p>
           <p>
             Password:{" "}
-            {connectionInfo.password ? connectionInfo.password : "Not set"}
+            {connectionInfo.password
+              ? /* connectionInfo.password */ "*******"
+              : "Not set"}
           </p>
         </div>
         <OBSConnectionProvider connectionInfo={connectionInfo}>

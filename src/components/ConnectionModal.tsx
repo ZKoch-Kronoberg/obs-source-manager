@@ -28,7 +28,7 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
     >
-      <h2 className="text-4xl mb-4">Anslut</h2>
+      <h2 className="text-4xl mb-4">Connect</h2>
       <form>
         <div>
           <label htmlFor="wsURL">WebSocket Port: </label>
@@ -54,10 +54,10 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
         </div>
         <div className="flex flex-row gap-x-2">
           <button className="border-2" type="button" onClick={handleSave}>
-            Spara
+            Save
           </button>
           <button className="border-2" type="button" onClick={onClose}>
-            Stäng
+            Close
           </button>
         </div>
       </form>
