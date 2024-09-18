@@ -2,6 +2,7 @@ import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { OBSSource } from "../shared";
 import { OBSConnectionContext } from "../contexts/OBSConnectionContext";
 import { toast } from "react-toastify";
+import { Video, VideoOff} from "react-feather"
 
 interface SourceProps {
   source: OBSSource;
@@ -67,7 +68,7 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
           />
         ) : null}
         <span className="px-2">
-          {source.enabled ? "enabled " : "disabled "}
+          {source.enabled ? <Video /> : <VideoOff />}
         </span>
         <button
           disabled={isRecording}
