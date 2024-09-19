@@ -8,6 +8,7 @@ interface HelpModalProps {
 
 const HelpModal: FunctionComponent<HelpModalProps> = ({ isOpen, onClose }) => {
   Modal.setAppElement("#root");
+
   return (
     <Modal
       isOpen={isOpen}
@@ -23,8 +24,7 @@ const HelpModal: FunctionComponent<HelpModalProps> = ({ isOpen, onClose }) => {
       <h3 className="text-2xl">Setting up OBS Studio</h3>
       <p>
         To use this control panel as inteded you will need to have{" "}
-        <a href="https://obsproject.com/download">OBS Studio</a>
-        and the plugins{" "}
+        <a href="https://obsproject.com/download">OBS Studio</a> and the plugins{" "}
         <a href="https://obsproject.com/forum/resources/obs-websocket-remote-control-obs-studio-using-websockets.466/">
           "obs-websocket"
         </a>{" "}
@@ -56,19 +56,19 @@ const HelpModal: FunctionComponent<HelpModalProps> = ({ isOpen, onClose }) => {
         <img
           src={`${process.env.PUBLIC_URL}/help/obs_import.png`}
           alt="OBS's interface with the location of the import button highlighted"
-          className="max-w-4xl"
+          className="max-w-3xl"
         />
         Then click on the "..." button and select the scene collection file
         using the file explorer.
         <img
           src={`${process.env.PUBLIC_URL}/help/obs_import2.png`}
           alt='OBS&apos;s import scene collection dialog with the location of the "..." button highlighted'
-          className="max-w-4xl"
+          className="max-w-3xl"
         />
         <img
           src={`${process.env.PUBLIC_URL}/help/obs_import3.png`}
           alt="how to select a scene collection in the file explorer"
-          className="max-w-4xl"
+          className="max-w-3xl"
         />
         After that press the import button in the dialog to add the scene
         collection and switch to it from the scene collection tab of OBS' top
@@ -76,18 +76,49 @@ const HelpModal: FunctionComponent<HelpModalProps> = ({ isOpen, onClose }) => {
         <img
           src={`${process.env.PUBLIC_URL}/help/obs_import4.png`}
           alt="OBS's import scene collection dialog with the import button highlighted"
-          className="max-w-4xl"
+          className="max-w-3xl"
         />
         <img
           src={`${process.env.PUBLIC_URL}/help/obs_import5.png`}
           alt="OBS's interface with the location of the button to switch to the added scene highlighted"
-          className="max-w-4xl"
+          className="max-w-3xl"
         />
       </p>
       <h4 className="text-xl">
         Creating a scene collection from scratch or modifying an existing one
       </h4>
-      <p>This section will be added later.</p>
+      <p>
+        New scene collections or modifications to existing ones can be made in
+        OBS Studio. The control panel should work with any scene that follows
+        this structure:
+        {/* prettier-ignore */}
+        <pre className="pl-4 text-sm whitespace-pre-line" role="img" aria-label="Required scene collection structure diagram" aria-describedby="scene-collection-description">
+          {`Master scene
+          ├── Scene source for Nested scene 1
+          ├── Scene source for Nested scene 2
+          └── ...
+          Nested scene 1
+          ├── Video source 1A
+          │   └── Source record filter
+          ├── Video source 1B
+          │   └── Source record filter
+          └── ...
+          Nested scene 2
+          ├── Video source 2A
+          │   └── Source record filter
+          ├── Video source 2B
+          │   └── Source record filter
+          └── ...
+          ...`}
+          </pre>
+      </p>
+      <p id="scene-collection-description">
+        The scene collection has a master scene and one or more nested scenes.
+        The master scene has a scene source for each of the nested scenes. Each
+        nested scene has one or more video sources, which each have a single
+        source record filter named "Source Record" (case sensetive) with its
+        record mode set to "recording".
+      </p>
       <h3 className="text-2xl">Setting up OBS WebSocket server</h3>
       <p>
         The OBS WebSocket server lets the control panel connect to the OBS
@@ -96,7 +127,7 @@ const HelpModal: FunctionComponent<HelpModalProps> = ({ isOpen, onClose }) => {
         <img
           src={`${process.env.PUBLIC_URL}/help/obs_websocket.png`}
           alt="OBS's interface with the location of the Websocket server settings button highlighted"
-          className="max-w-4xl"
+          className="max-w-3xl"
         />
         In the websocket settings dialog you need to:
         <ol className="list-decimal list-inside">
@@ -110,13 +141,13 @@ const HelpModal: FunctionComponent<HelpModalProps> = ({ isOpen, onClose }) => {
         <img
           src={`${process.env.PUBLIC_URL}/help/obs_websocket2.png`}
           alt="OBS's WebSocket server settings dialog with the mentioned controls highlighted"
-          className="max-w-4xl"
+          className="max-w-3xl"
         />
       </p>
       <p>
         The OBS WebSocket server should now automatically start when OBS starts.
       </p>
-      <h2 className="text-4xl">Connecting the control panel to OBS</h2>
+      <h2 className="text-3xl">Connecting the control panel to OBS</h2>
       <p>
         <ol className="list-decimal list-inside">
           <li>open OBS and select your master scene</li>
@@ -127,7 +158,7 @@ const HelpModal: FunctionComponent<HelpModalProps> = ({ isOpen, onClose }) => {
             <img
               src={`${process.env.PUBLIC_URL}/help/connection_errors.png`}
               alt='the three error messages mentioned: "Error: couldn&apos;t connect to webSocket", "Failed to connect to OBS:","Failed to connect to OBS:Your payload&apos;s data is missing an `authentication` string, however authentication is required."'
-              className="max-w-4xl"
+              className="max-w-3xl"
             />
             which you can ignore if you did set a password.
           </li>
