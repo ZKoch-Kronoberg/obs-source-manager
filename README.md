@@ -35,6 +35,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+To make a build that will work when running locally from the file system use
+
+```bash
+PUBLIC_URL=. npm run build
+```
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
