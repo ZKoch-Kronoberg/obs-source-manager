@@ -86,7 +86,7 @@ function App() {
           3rd party atributions
         </a>
       </footer>
-      <ToastContainer position="top-right" />
+      <ToastContainer position="top-right" autoClose={false} />
     </>
   );
 }
