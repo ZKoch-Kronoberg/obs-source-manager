@@ -4,7 +4,7 @@ import ConnectionModal from "./components/ConnectionModal";
 import { ConnectionInfo } from "./shared";
 import { OBSConnectionProvider } from "./contexts/OBSConnectionContext";
 import SceneView from "./components/SceneView";
-import { ToastContainer } from "react-toastify";
+import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RecordingControls from "./components/RecordingControls";
 import HelpModal from "./components/HelpModal";
@@ -78,7 +78,12 @@ function App() {
           <RecordingControls />
         </OBSConnectionProvider>
       </main>
-      <footer className="border-t-2 flex flex-row gap-x-2">
+      <ToastContainer
+        position="top-right"
+        autoClose={false}
+        transition={Slide}
+      />
+      <footer className="border-t-2 flex flex-row gap-x-2 mt-2">
         <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/LICENSE.txt">
           License
         </a>
@@ -86,7 +91,6 @@ function App() {
           3rd party atributions
         </a>
       </footer>
-      <ToastContainer position="top-right" autoClose={false} />
     </>
   );
 }
