@@ -24,7 +24,7 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
     <Modal
       isOpen={isOpen}
       onAfterClose={onClose}
-      contentLabel="Konfigurera anslutning"
+      contentLabel="Connection settings"
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
     >
@@ -52,11 +52,11 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
             placeholder="Skriv lösenord"
           />
         </div>
-        <div className="flex flex-row gap-x-2">
-          <button className="border-2" type="button" onClick={handleSave}>
+        <div className="flex flex-row gap-x-2 mt-2">
+          <button className="border-2 px-2" type="button" onClick={handleSave}>
             Save
           </button>
-          <button className="border-2" type="button" onClick={onClose}>
+          <button className="border-2 px-2" type="button" onClick={onClose}>
             Close
           </button>
         </div>

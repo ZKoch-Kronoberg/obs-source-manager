@@ -2,7 +2,7 @@ import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { OBSSource } from "../shared";
 import { OBSConnectionContext } from "../contexts/OBSConnectionContext";
 import { toast } from "react-toastify";
-import { Video, VideoOff} from "react-feather"
+import { Video, VideoOff } from "react-feather";
 
 interface SourceProps {
   source: OBSSource;
@@ -30,8 +30,8 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
         const response = await connection.call("GetSourceScreenshot", {
           sourceName: source.sourceName,
           imageFormat: "jpg",
-          imageWidth: 256,
-          imageCompressionQuality: 25,
+          imageWidth: 512,
+          imageCompressionQuality: 100,
         });
 
         setImageData(response.imageData);
@@ -62,7 +62,7 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
         </span>
         {imageData ? (
           <img
-            className="mx-2"
+            className="mx-2 max-w-96 max-h-96"
             src={`${imageData}`}
             alt={`preview of the video source ${source.sourceName}`}
           />

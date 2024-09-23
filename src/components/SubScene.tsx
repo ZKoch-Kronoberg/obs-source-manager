@@ -105,10 +105,13 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
         if (response.sceneItems.length < 1) {
           throw new Error(`could not detect any sceneItems in ${name}`);
         }
-        console.log(`${name}`, response.sceneItems);
+        console.log(`${name}:`, response.sceneItems);
 
         const foundSourceObjects = response.sceneItems.filter((source) => {
-          return source.sourceType === "OBS_SOURCE_TYPE_INPUT";
+          return (
+            source.sourceType === "OBS_SOURCE_TYPE_INPUT" &&
+            source.inputKind !== "wasapi_process_output_capture"
+          );
         });
         if (foundSourceObjects.length < 1) {
           throw new Error(`could not detect any inputs in ${name}`);
