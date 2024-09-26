@@ -12,6 +12,8 @@ import HelpModal from "./components/HelpModal";
 function App() {
   //STATE
   //connection info
+  /*TODO: figure out why exactly the app instantly tries to connec on its own
+          I think it's something with OBSConnectionContext*/
   const [connectionInfo, setConnectionInfo] = useState<ConnectionInfo>({
     url: "ws://localhost:4455",
     password: "",
@@ -63,16 +65,11 @@ function App() {
           callback={HandleConnectionInfoSave}
         />
         <HelpModal isOpen={helpModalIsOpen} onClose={closeHelpModal} />
-        <div>
+        {/* <div>
           <h2 className="text-2xl">Current Connection Info</h2>
           <p>WebSocket : {connectionInfo.url}</p>
-          <p>
-            Password:{" "}
-            {connectionInfo.password
-              ? /* connectionInfo.password */ "*******"
-              : "Not set"}
-          </p>
-        </div>
+          <p>Password: {connectionInfo.password ? "*******" : "Not set"}</p>
+        </div> */}
         <OBSConnectionProvider connectionInfo={connectionInfo}>
           <SceneView />
           <RecordingControls />
