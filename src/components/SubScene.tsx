@@ -246,24 +246,8 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
   //TODO: use flex basis to change number of columns with screen size.
   return (
     <li className="border-2">
-      <div className="flex flex-row flex-wrap gap-x-2 gap-y-1 p-1 border-b-2">
+      <div className="p-1 border-b-2">
         <h3 className="text-xl">{name}</h3>
-        <div className="flex flex-row flex-wrap gap-x-2 gap-y-1">
-          <button
-            disabled={isRecording}
-            className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
-            onClick={() => SetAllSourcesEnabled(true)}
-          >
-            Enable all
-          </button>
-          <button
-            disabled={isRecording}
-            className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
-            onClick={() => SetAllSourcesEnabled(false)}
-          >
-            Disable all
-          </button>
-        </div>
       </div>
       {sources ? (
         <ul className="flex flex-row flex-wrap gap-x-2 gap-y-1 p-2">
@@ -276,6 +260,22 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
           ))}
         </ul>
       ) : null}
+      <div className="flex flex-row flex-wrap gap-x-2 gap-y-1 border-t-2 px-2 py-1">
+        <button
+          disabled={isRecording}
+          className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
+          onClick={() => SetAllSourcesEnabled(true)}
+        >
+          Enable all
+        </button>
+        <button
+          disabled={isRecording}
+          className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
+          onClick={() => SetAllSourcesEnabled(false)}
+        >
+          Disable all
+        </button>
+      </div>
     </li>
   );
 };
