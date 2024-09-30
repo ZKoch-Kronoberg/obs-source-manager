@@ -170,6 +170,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
     }
   }, [sources, connection, syncSourceEnabledChange]);
 
+  //TODO: adding debouncing to this and setAllSourcesEnabled could slightly decrease epilepsy
   const setSourceEnabled = useCallback(
     async (source: OBSSource, value: boolean) => {
       try {
@@ -242,6 +243,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
   );
 
   // apply this https://inclusive-components.design/a-todo-list/ to both this conponent and sceneview
+  //TODO: use flex basis to change number of columns with screen size.
   return (
     <li className="border-2">
       <div className="flex flex-row flex-wrap gap-x-2 gap-y-1 p-1 border-b-2">

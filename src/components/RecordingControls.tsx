@@ -45,22 +45,33 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
   }
 
   return (
-    <div className="flex flex-row flex-wrap gap-x-2 gap-y-1 mt-2">
-      <button
-        disabled={isRecording}
-        onClick={startRecording}
-        className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
-      >
-        Start recording
-      </button>
-      <button
-        disabled={!isRecording}
-        onClick={stopRecording}
-        className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
-      >
-        Stop recording
-      </button>
-    </div>
+    <>
+      <span className="text-lg">
+        {isRecording ? "Recording is in progress" : "Not recording"}
+      </span>
+      <div className="flex flex-row flex-wrap gap-x-2 gap-y-1 mt-2">
+        <button
+          disabled={isRecording}
+          onClick={startRecording}
+          className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
+          aria-label="Start recording"
+          aria-describedby="recordingInfo"
+        >
+          Start recording
+        </button>
+        <button
+          disabled={!isRecording}
+          onClick={stopRecording}
+          className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
+        >
+          Stop recording
+        </button>
+      </div>
+      <span id="recordingInfo">
+        Note: you will not be able to change which sources are being recorded
+        once a recording is in progress.
+      </span>
+    </>
   );
 };
 

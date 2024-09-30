@@ -75,7 +75,7 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
           className="border-2 m-2 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
           onClick={toggleSourceEnabled}
         >
-          toggle
+          {source.enabled ? "Exclude from recording" : "Include in recording"}
         </button>
       </div>
     </li>
