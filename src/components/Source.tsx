@@ -62,7 +62,9 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
         </span>
         {imageData ? (
           <img
-            className="mx-2 max-w-96 max-h-96"
+            className={`mx-2 max-w-96 max-h-96${
+              !source.enabled ? " grayscale" : ""
+            }`}
             src={`${imageData}`}
             alt={`preview of the video source ${source.sourceName}`}
           />
