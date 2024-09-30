@@ -245,7 +245,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
   // apply this https://inclusive-components.design/a-todo-list/ to both this conponent and sceneview
   //TODO: use flex basis to change number of columns with screen size.
   return (
-    <li className="border-2">
+    <li className="border-2" aria-label={`Nested scene ${name}`}>
       <div className="p-1 border-b-2">
         <h3 className="text-xl">{name}</h3>
       </div>
