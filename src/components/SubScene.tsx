@@ -265,15 +265,17 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
           disabled={isRecording}
           className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
           onClick={() => SetAllSourcesEnabled(true)}
+          aria-label={`include all sources in ${name} in recording`}
         >
-          Enable all
+          Include all sources in recording
         </button>
         <button
           disabled={isRecording}
           className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
           onClick={() => SetAllSourcesEnabled(false)}
+          aria-label={`include all sources in ${name} in recording`}
         >
-          Disable all
+          Exclude all sources from recording
         </button>
       </div>
     </li>
