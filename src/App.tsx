@@ -49,7 +49,7 @@ function App() {
 
   return (
     <>
-      <main className="w-full min-h-screen max-h-full px-4 pt-4">
+      <main className="w-full min-h-screen px-4 pt-4">
         <h1 className="text-4xl mb-4">OBS Control panel</h1>
         <div className="flex flex-row gap-x-2">
           <button className="border-2 px-2" onClick={openConnectionModal}>
