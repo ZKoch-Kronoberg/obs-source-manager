@@ -250,7 +250,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
         <h3 className="text-xl">{name}</h3>
       </div>
       {sources ? (
-        <ul className="flex flex-row flex-wrap gap-x-2 gap-y-1 p-2">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-2 gap-y-1 p-2">
           {sources.map((source) => (
             <Source
               source={source}
