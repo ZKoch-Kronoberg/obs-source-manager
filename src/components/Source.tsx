@@ -57,18 +57,20 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
 
   return (
     <li>
-      <div className="flex flex-col border-2 space-y-2 pb-2">
-        <span className="border-b-2 font-semibold px-2">
+      <div className="flex flex-col border-2 h-full pb-2">
+        <span className="border-b-2 font-semibold px-2 mb-2">
           {source.sourceName}
         </span>
         {imageData ? (
           <img
-            className={`mx-2 max-h-96${!source.enabled ? " grayscale" : ""}`}
+            className={`mx-2 mb-2 my-auto max-h-48 object-scale-down${
+              !source.enabled ? " grayscale" : ""
+            }`}
             src={`${imageData}`}
             alt={`preview of the video source ${source.sourceName}`}
           />
         ) : null}
-        <div className="flex flex-row justify-between items-center mx-2 my-2">
+        <div className="flex flex-row justify-between items-center mx-2 mt-auto">
           {source.enabled ? <Video /> : <VideoOff />}
           <Switch
             checked={source.enabled as boolean}
