@@ -58,9 +58,9 @@ const SceneView: FunctionComponent<SceneViewProps> = () => {
         console.error(error);
 
         if (error instanceof Error) {
-          toast.error(`Error: ${error.message}`);
+          //toast.error(`Error: ${error.message}`);
         } else {
-          toast.error("An unexpected error occured");
+          //toast.error("An unexpected error occured");
         }
       }
     };

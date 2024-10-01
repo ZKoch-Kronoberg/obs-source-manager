@@ -1,7 +1,7 @@
 import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { OBSSource } from "../shared";
 import { OBSConnectionContext } from "../contexts/OBSConnectionContext";
-import { toast } from "react-toastify";
+//import { toast } from "react-toastify";
 import { Video, VideoOff } from "react-feather";
 import Switch from "react-switch";
 
@@ -40,9 +40,9 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
         console.error(error);
 
         if (error instanceof Error) {
-          toast.error(`Error: ${error.message}`);
+          //toast.error(`Error: ${error.message}`);
         } else {
-          toast.error("An unexpected error occured");
+          //toast.error("An unexpected error occured");
         }
       }
     };

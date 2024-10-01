@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { OBSConnectionContext } from "../contexts/OBSConnectionContext";
-import { toast } from "react-toastify";
+//import { toast } from "react-toastify";
 import { OBSSource } from "../shared";
 import Source from "./Source";
 import { OBSEventTypes } from "obs-websocket-js";
@@ -81,9 +81,9 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
         console.error(error);
 
         if (error instanceof Error) {
-          toast.error(`Error: ${error.message}`);
+          //toast.error(`Error: ${error.message}`);
         } else {
-          toast.error("An unexpected error occured");
+          //toast.error("An unexpected error occured");
         }
       }
     },
@@ -139,9 +139,9 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
         console.error(error);
 
         if (error instanceof Error) {
-          toast.error(`Error: ${error.message}`);
+          //toast.error(`Error: ${error.message}`);
         } else {
-          toast.error("An unexpected error occured");
+          //toast.error("An unexpected error occured");
         }
       }
     };
@@ -187,9 +187,9 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
         console.error(error);
 
         if (error instanceof Error) {
-          toast.error(`Error: ${error.message}`);
+          //toast.error(`Error: ${error.message}`);
         } else {
-          toast.error("An unexpected error occured");
+          //toast.error("An unexpected error occured");
         }
       }
       return;
@@ -232,9 +232,9 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
         console.error(error);
 
         if (error instanceof Error) {
-          toast.error(`Error: ${error.message}`);
+          //toast.error(`Error: ${error.message}`);
         } else {
-          toast.error("An unexpected error occured");
+          //toast.error("An unexpected error occured");
         }
       }
     },
