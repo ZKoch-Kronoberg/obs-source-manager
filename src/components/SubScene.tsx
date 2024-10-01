@@ -260,7 +260,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
           ))}
         </ul>
       ) : null}
-      <div className="flex flex-row flex-wrap gap-x-2 gap-y-1 border-t-2 px-2 py-1">
+      <div className="flex flex-row flex-wrap gap-x-2 gap-y-1 border-t-2 px-2 py-2">
         <button
           disabled={isRecording}
           className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"

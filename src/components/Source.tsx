@@ -3,6 +3,7 @@ import { OBSSource } from "../shared";
 import { OBSConnectionContext } from "../contexts/OBSConnectionContext";
 import { toast } from "react-toastify";
 import { Video, VideoOff } from "react-feather";
+import Switch from "react-switch";
 
 interface SourceProps {
   source: OBSSource;
@@ -56,29 +57,26 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
 
   return (
     <li>
-      <div className="flex flex-col border-2 space-y-1 pb-2">
+      <div className="flex flex-col border-2 space-y-2 pb-2">
         <span className="border-b-2 font-semibold px-2">
           {source.sourceName}
         </span>
         {imageData ? (
           <img
-            className={`mx-2 max-w-96 max-h-96${
-              !source.enabled ? " grayscale" : ""
-            }`}
+            className={`mx-2 max-h-96${!source.enabled ? " grayscale" : ""}`}
             src={`${imageData}`}
             alt={`preview of the video source ${source.sourceName}`}
           />
         ) : null}
-        <span className="px-2">
+        <div className="flex flex-row justify-between items-center mx-2 my-2">
           {source.enabled ? <Video /> : <VideoOff />}
-        </span>
-        <button
-          disabled={isRecording}
-          className="border-2 m-2 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
-          onClick={toggleSourceEnabled}
-        >
-          {source.enabled ? "Exclude from recording" : "Include in recording"}
-        </button>
+          <Switch
+            checked={source.enabled as boolean}
+            onChange={() => toggleSourceEnabled()}
+            aria-label={`Include source ${source.sourceName} in recording`}
+            disabled={isRecording}
+          ></Switch>
+        </div>
       </div>
     </li>
   );
