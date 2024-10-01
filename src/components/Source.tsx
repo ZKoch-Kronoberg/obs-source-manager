@@ -67,7 +67,7 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
               !source.enabled ? " grayscale" : ""
             }`}
             src={`${imageData}`}
-            alt={`preview of the video source ${source.sourceName}`}
+            alt={`${source.sourceName} video source preview`}
           />
         ) : null}
         <div className="flex flex-row justify-between items-center mx-2 mt-auto">
