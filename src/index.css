@@ -13,4 +13,16 @@
   p {
     @apply mb-2;
   }
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply outline-none ring-2 ring-customFocus; /* Custom styles for focus */
+  }
+}
+
+@layer utilities {
+  .focus-custom {
+    @apply ring-2 ring-blue-500 outline-none; 
+  }
 }
