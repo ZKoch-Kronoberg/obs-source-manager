@@ -47,7 +47,12 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
       }
     };
 
-    getPreviewImage();
+    const timeoutId = setTimeout(() => {
+      getPreviewImage();
+    }, 2000); //2000 milliseconds = 2 seconds
+  
+    return () => clearTimeout(timeoutId);
+
   }, [source, connection]);
 
   function toggleSourceEnabled() {
