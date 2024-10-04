@@ -16,11 +16,13 @@ import { toast } from "react-toastify";
 interface OBSConnectionContextType {
   connection: OBSWebSocket | null;
   isRecording: boolean;
+  recordingStartTime: Date | null;
 }
 
 export const OBSConnectionContext = createContext<OBSConnectionContextType>({
   connection: null,
   isRecording: false,
+  recordingStartTime: null,
 });
 
 export const useOBSConnection = () => useContext(OBSConnectionContext);
@@ -36,6 +38,9 @@ export const OBSConnectionProvider: React.FC<OBSConnectionProviderProps> = ({
 }) => {
   const [connection, setConnection] = useState<OBSWebSocket | null>(null);
   const [isRecording, setisRecording] = useState<boolean>(false);
+  const [recordingStartTime, setRecordingStartTime] = useState<Date | null>(
+    null
+  );
 
   useEffect(() => {
     let obs: OBSWebSocket | null = null;
@@ -80,10 +85,34 @@ export const OBSConnectionProvider: React.FC<OBSConnectionProviderProps> = ({
     async (event: OBSEventTypes["RecordStateChanged"]) => {
       console.log("event.outputActive:", event.outputActive);
       setisRecording(event.outputActive);
-    },
-    []
-  );
 
+      //we also need to update the recording start time
+      //are we recording?
+      if (event.outputActive) {
+        //we are -> get current duration because the event doesn't include it
+        if (!connection) {
+          console.log("can't get recording status yet, not connected");
+          return;
+        }
+        const result = await connection.call("GetRecordStatus");
+        updateStartTime(result.outputDuration);
+      } else {
+        // we aren't -> just set it to null
+        setRecordingStartTime(null);
+      }
+    }, [connection] );
+
+  function updateStartTime(currentDuration: number) {
+    console.log("foo");
+    const currentTimestamp = new Date().getTime();
+    setRecordingStartTime(new Date(currentTimestamp - currentDuration));
+    console.log(
+      "recording started on:",
+      new Date(currentTimestamp - currentDuration)
+    );
+  }
+
+  //recording status stuff
   useEffect(() => {
     const getRecordingStatus = async () => {
       if (!connection) {
@@ -91,8 +120,15 @@ export const OBSConnectionProvider: React.FC<OBSConnectionProviderProps> = ({
         return;
       }
 
+      //see if we are recording already not
       const result = await connection.call("GetRecordStatus");
-      console.log(result);
+      console.log("Recording: ", result.outputActive);
+
+      //If we are, work out when we started recording
+      if (result.outputActive) {
+        updateStartTime(result.outputDuration);
+      }
+
       setisRecording(result.outputActive);
       console.log("isRecording was set to:", result.outputActive);
 
@@ -108,7 +144,11 @@ export const OBSConnectionProvider: React.FC<OBSConnectionProviderProps> = ({
 
   return (
     <OBSConnectionContext.Provider
-      value={{ connection: connection, isRecording: isRecording }}
+      value={{
+        connection: connection,
+        isRecording: isRecording,
+        recordingStartTime: recordingStartTime,
+      }}
     >
       {children}
     </OBSConnectionContext.Provider>
