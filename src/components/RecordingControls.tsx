@@ -1,11 +1,44 @@
-import { FunctionComponent, useContext } from "react";
+import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { OBSConnectionContext } from "../contexts/OBSConnectionContext";
 import { toast } from "react-toastify";
 
 interface RecordingControlsProps {}
 
 const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
-  const { connection, isRecording } = useContext(OBSConnectionContext);
+  const { connection, isRecording, recordingStartTime } =
+    useContext(OBSConnectionContext);
+
+  const [recordingDuration, setRecordingDuration] = useState<number>(0);
+
+  function formatDuration(milliseconds: number) {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600)
+      .toString()
+      .padStart(2, "0");
+    const minutes = Math.floor((totalSeconds % 3600) / 60)
+      .toString()
+      .padStart(2, "0");
+    const seconds = (totalSeconds % 60).toString().padStart(2, "0");
+
+    return `${hours}:${minutes}:${seconds}`;
+  }
+
+  useEffect(() => {
+    if (recordingStartTime === null || isRecording === false) {
+      return;
+    }
+
+    const timerUpdateInterval = setInterval(() => {
+      const calculatedDuration =
+        new Date().getTime() - recordingStartTime.getTime();
+      setRecordingDuration(calculatedDuration);
+    }, 1000);
+
+    return () => {
+      clearInterval(timerUpdateInterval);
+      setRecordingDuration(0);
+    };
+  }, [isRecording, recordingStartTime]);
 
   async function startRecording() {
     try {
@@ -46,9 +79,10 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
 
   return (
     <>
-      <span className="text-lg">
+      <div className="text-lg">
         {isRecording ? "Recording is in progress" : "Not recording"}
-      </span>
+      </div>
+      <div role="timer">{formatDuration(recordingDuration)}</div>
       <div className="flex flex-row flex-wrap gap-x-2 gap-y-1 mt-2">
         <button
           disabled={isRecording}

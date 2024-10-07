@@ -100,10 +100,12 @@ export const OBSConnectionProvider: React.FC<OBSConnectionProviderProps> = ({
         // we aren't -> just set it to null
         setRecordingStartTime(null);
       }
-    }, [connection] );
+    },
+    [connection]
+  );
 
   function updateStartTime(currentDuration: number) {
-    console.log("foo");
+    //console.log("foo");
     const currentTimestamp = new Date().getTime();
     setRecordingStartTime(new Date(currentTimestamp - currentDuration));
     console.log(
