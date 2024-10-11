@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-offWhite text-offBlack;
+    @apply bg-darkGray ;
   }
   a {
     @apply text-blue-600;
@@ -18,6 +18,18 @@
   textarea:focus,
   select:focus {
     @apply outline-none ring-2 ring-customFocus; /* Custom styles for focus */
+  }
+  h1 {
+    @apply text-h1;
+  }
+  h2 {
+    @apply text-h2;
+  }
+  h3 {
+    @apply text-h3;
+  }
+  p {
+    @apply text-p
   }
 }
 
