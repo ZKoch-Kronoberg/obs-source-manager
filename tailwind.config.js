@@ -4,10 +4,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkGray: "#474747",
-        lightGray: "#EDE7E7",
+        darkestGray: "#14181D",
+        darkGray: "#515457",
+        lightGray: "#EAE8E8",
         gray: "#777676",
         offblack: "#141414",
+        offwhite: "#FEFEFE",
+        purplishBlue: "#2961D1",
         customFocus: "#3B82F6",
       },
       borderColor: {
