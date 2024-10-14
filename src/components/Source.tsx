@@ -50,9 +50,8 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
     const timeoutId = setTimeout(() => {
       getPreviewImage();
     }, 2000); //2000 milliseconds = 2 seconds
-  
-    return () => clearTimeout(timeoutId);
 
+    return () => clearTimeout(timeoutId);
   }, [source, connection]);
 
   function toggleSourceEnabled() {
@@ -62,20 +61,22 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
 
   return (
     <li>
-      <div className="flex flex-col border-2 h-full pb-2">
-        <span className="border-b-2 font-semibold px-2 mb-2">
-          {source.sourceName}
-        </span>
-        {imageData ? (
-          <img
-            className={`mx-2 mb-2 my-auto max-h-48 object-scale-down${
-              !source.enabled ? " grayscale" : ""
-            }`}
-            src={`${imageData}`}
-            alt={`${source.sourceName} video source preview`}
-          />
-        ) : null}
-        <div className="flex flex-row justify-between items-center mx-2 mt-auto">
+      <div className="bg-lightGray flex flex-col rounded-sm border border-gray">
+        <div className="border-b-[1px] border-gray w-full px-[16px] py-[8px]">
+          <span className="text-p">{source.sourceName}</span>
+        </div>
+        <div className="p-[16px] h-[160px]">
+          {imageData ? (
+            <img
+              className={`object-scale-down rounded-sm${
+                !source.enabled ? " grayscale" : ""
+              }`}
+              src={`${imageData}`}
+              alt={`${source.sourceName} video source preview`}
+            />
+          ) : null}
+        </div>
+        <div className="flex flex-row justify-between items-center border-t-[1px] border-gray mt-auto px-[16px] py-[8px]">
           {source.enabled ? <Video /> : <VideoOff />}
           <Switch
             checked={source.enabled as boolean}
