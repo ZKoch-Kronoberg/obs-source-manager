@@ -90,18 +90,24 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
           className="bg-offblack text-white font-[700] flex items-center justify-center gap-x-[12px] rounded-full p-[12px] mb-[16px]"
           onClick={stopRecording}
           aria-label="Stop recording"
+          aria-describedby="recordingInfo"
         >
           <span>Start recording</span>
-          <span className="text-white text-[19px]">■ </span>
+          <span className="text-white text-[19px]" role="img">
+            ■
+          </span>
         </button>
       ) : (
         <button
           className="bg-offblack text-white font-[700] flex items-center justify-center gap-x-[12px] rounded-full p-[12px] mb-[16px]"
           onClick={startRecording}
           aria-label="Start recording"
+          aria-describedby="recordingInfo"
         >
           <span>Start recording</span>
-          <span className="text-[#F00006] text-[19px]">⬤ </span>
+          <span className="text-[#F00006] text-[19px]" role="img">
+            ⬤
+          </span>
         </button>
       )}
       <p id="recordingInfo mb-[49px] text-[12px]">
