@@ -49,15 +49,23 @@ function App() {
 
   return (
     <>
-      <main className="w-full min-h-screen px-4 pt-4">
-        <h1 className="text-4xl mb-4">OBS Control panel</h1>
-        <div className="flex flex-row gap-x-2">
-          <button className="border-2 px-2" onClick={openConnectionModal}>
-            Open connection settings
-          </button>
-          <button className="border-2 px-2" onClick={openHelpModal}>
-            Help
-          </button>
+      <main className="w-full min-h-screen pt-[66px] flex flex-col">
+        <div className="flex justify-between items-center mx-[122px] mb-[32px] font-[400]">
+          <h1 className="text-h1 text-white">OBS Control panel</h1>
+          <div className="flex flex-row gap-x-[12px]">
+            <button
+              className="text-white font-[700] bg-purplishBlue rounded-full p-[12px]"
+              onClick={openConnectionModal}
+            >
+              Open connection settings
+            </button>
+            <button
+              className="text-white font-[700] rounded-full border border-white p-[12px]"
+              onClick={openHelpModal}
+            >
+              Help
+            </button>
+          </div>
         </div>
         <ConnectionModal
           isOpen={connectionModalIsOpen}
@@ -80,7 +88,7 @@ function App() {
         autoClose={false}
         transition={Slide}
       />
-      <footer className="border-t-2 flex flex-row gap-x-2 mt-2">
+      <footer className="bg-lightGray border-t-[1px] border-gray flex flex-row gap-x-[12px] px-[121px]">
         <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/LICENSE.txt">
           License
         </a>

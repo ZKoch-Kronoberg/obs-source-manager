@@ -78,7 +78,7 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
   }
 
   return (
-    <div className=" bg-lightGray rounded-t-lg px-[121px] pt-[32px]">
+    <div className=" bg-lightGray rounded-t-lg px-[121px] pt-[32px] mt-auto">
       <div className="text-h2 font-[700] mb-[16px]">
         {isRecording ? "Recording is in progress" : "Not recording"}
       </div>
