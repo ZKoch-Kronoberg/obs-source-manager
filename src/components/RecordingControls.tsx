@@ -78,34 +78,37 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
   }
 
   return (
-    <>
-      <div className="text-lg">
+    <div className=" bg-lightGray rounded-t-lg px-[121px] pt-[32px]">
+      <div className="text-h2 font-[700] mb-[16px]">
         {isRecording ? "Recording is in progress" : "Not recording"}
       </div>
-      <div role="timer">{formatDuration(recordingDuration)}</div>
-      <div className="flex flex-row flex-wrap gap-x-2 gap-y-1 mt-2">
-        <button
-          disabled={isRecording}
-          onClick={startRecording}
-          className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
-          aria-label="Start recording"
-          aria-describedby="recordingInfo"
-        >
-          Start recording
-        </button>
-        <button
-          disabled={!isRecording}
-          onClick={stopRecording}
-          className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
-        >
-          Stop recording
-        </button>
+      <div role="timer" className="mb-[18px]">
+        {formatDuration(recordingDuration)}
       </div>
-      <span id="recordingInfo">
+      {isRecording ? (
+        <button
+          className="bg-offblack text-white font-[700] flex items-center justify-center gap-x-[12px] rounded-full p-[12px] mb-[16px]"
+          onClick={stopRecording}
+          aria-label="Stop recording"
+        >
+          <span>Start recording</span>
+          <span className="text-white text-[19px]">■ </span>
+        </button>
+      ) : (
+        <button
+          className="bg-offblack text-white font-[700] flex items-center justify-center gap-x-[12px] rounded-full p-[12px] mb-[16px]"
+          onClick={startRecording}
+          aria-label="Start recording"
+        >
+          <span>Start recording</span>
+          <span className="text-[#F00006] text-[19px]">⬤ </span>
+        </button>
+      )}
+      <p id="recordingInfo mb-[49px] text-[12px]">
         Note: you will not be able to change which sources are being recorded
         once a recording is in progress.
-      </span>
-    </>
+      </p>
+    </div>
   );
 };
 
