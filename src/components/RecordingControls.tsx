@@ -92,7 +92,7 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
           aria-label="Stop recording"
           aria-describedby="recordingInfo"
         >
-          <span>Start recording</span>
+          <span>Stop recording</span>
           <span className="text-white text-[19px]" role="img">
             ■
           </span>
