@@ -13,9 +13,6 @@ module.exports = {
         purplishBlue: "#2961D1",
         customFocus: "#3B82F6",
       },
-      borderColor: {
-        DEFAULT: "#777676",
-      },
       borderRadius: {
         sm: "10px",
         md: "20px",

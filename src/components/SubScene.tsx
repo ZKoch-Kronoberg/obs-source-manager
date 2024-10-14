@@ -245,38 +245,39 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
   // apply this https://inclusive-components.design/a-todo-list/ to both this conponent and sceneview
   //TODO: use flex basis to change number of columns with screen size.
   return (
-    <li className="border-2" aria-label={`Nested scene ${name}`}>
-      <div className="p-1 border-b-2">
-        <h3 className="text-xl">{name}</h3>
-      </div>
-      {sources ? (
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-2 gap-y-1 p-2">
-          {sources.map((source) => (
-            <Source
-              source={source}
-              key={source.sourceName}
-              setEnabled={setSourceEnabled}
-            ></Source>
-          ))}
-        </ul>
-      ) : null}
-      <div className="flex flex-row flex-wrap gap-x-2 gap-y-1 border-t-2 px-2 py-2">
-        <button
-          disabled={isRecording}
-          className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
-          onClick={() => SetAllSourcesEnabled(true)}
-          aria-label={`Include all sources in ${name} in recording`}
-        >
-          Include all sources in recording
-        </button>
-        <button
-          disabled={isRecording}
-          className="border-2 px-1 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
-          onClick={() => SetAllSourcesEnabled(false)}
-          aria-label={`Exclude all sources in ${name} fom recording`}
-        >
-          Exclude all sources from recording
-        </button>
+    <li className="" aria-label={`Nested scene ${name}`}>
+      <h3 className="text-white mb-[32px]">{name}</h3>
+      <div className="bg-darkGray border border-offwhite rounded-md px-[25px] py-[40px]">
+        {sources ? (
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-[16px] gap-y-1">
+            {sources.map((source) => (
+              <Source
+                source={source}
+                key={source.sourceName}
+                setEnabled={setSourceEnabled}
+              ></Source>
+            ))}
+          </ul>
+        ) : null}
+        <h4 className="text-white text-p mt-[32px] mb-[16px]">Recording</h4>
+        <div className="flex flex-row flex-wrap space-x-[7px]">
+          <button
+            disabled={isRecording}
+            className="disabled:cursor-not-allowed text-white bg-offblack rounded-full p-[12px]"
+            onClick={() => SetAllSourcesEnabled(true)}
+            aria-label={`Include all sources in ${name} in recording`}
+          >
+            Include all sources in recording
+          </button>
+          <button
+            disabled={isRecording}
+            className="disabled:cursor-not-allowed text-white border border-white rounded-full p-[12px]"
+            onClick={() => SetAllSourcesEnabled(false)}
+            aria-label={`Exclude all sources in ${name} fom recording`}
+          >
+            Exclude all sources from recording
+          </button>
+        </div>
       </div>
     </li>
   );
