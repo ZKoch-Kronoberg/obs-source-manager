@@ -10,9 +10,6 @@
     @apply text-blue-600;
     @apply underline
   }
-  p {
-    @apply mb-2;
-  }
   button:focus,
   input:focus,
   textarea:focus,
@@ -24,17 +21,40 @@
   }
   h2 {
     @apply text-h2;
+    @apply font-[700]
   }
   h3 {
     @apply text-h3;
+  }
+  h4 { 
+    @apply text-p; /*not great great that this always ties h4's size to the
+                     base text size but I feel like that's fine in this case */
+    @apply font-bold;
   }
   p {
     @apply text-p;
   }
 
-  button:disabled{
+  button:disabled {
     @apply bg-disabledGray;
   }
+
+  div.help-wrapper > h2 {
+    @apply mb-[16px];
+  }
+  div.help-wrapper > h3,
+  div.help-wrapper > h4 {
+    @apply mb-[16px];
+    @apply mt-[32px];
+  }
+  div.help-wrapper > p {
+    @apply mb-[16px]
+  }
+
+  div.help-wrapper {
+    @apply text-white
+  }
+
 }
 
 @layer utilities {
