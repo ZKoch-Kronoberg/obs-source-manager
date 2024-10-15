@@ -88,7 +88,7 @@ function App() {
         autoClose={false}
         transition={Slide}
       />
-      <footer className="bg-lightGray border-t-[1px] border-gray flex flex-row gap-x-[12px] px-[121px]">
+      <footer className="bg-lightGray  flex flex-row gap-x-[12px] px-[121px] pt-[16px]">
         <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/LICENSE.txt">
           License
         </a>
