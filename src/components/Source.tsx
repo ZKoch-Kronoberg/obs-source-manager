@@ -68,7 +68,7 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
         <div className="p-[16px] h-[160px]">
           {imageData ? (
             <img
-              className={`object-scale-down rounded-sm${
+              className={`object-scale-down max-h-full max-w-full m-auto rounded-sm${
                 !source.enabled ? " grayscale" : ""
               }`}
               src={`${imageData}`}
