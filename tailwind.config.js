@@ -12,6 +12,7 @@ module.exports = {
         offwhite: "#FEFEFE",
         purplishBlue: "#2961D1",
         customFocus: "#3B82F6",
+        disabledGray: "#858585",
       },
       borderRadius: {
         sm: "10px",

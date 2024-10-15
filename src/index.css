@@ -29,7 +29,11 @@
     @apply text-h3;
   }
   p {
-    @apply text-p
+    @apply text-p;
+  }
+
+  button:disabled{
+    @apply bg-disabledGray;
   }
 }
 
