@@ -7,8 +7,8 @@
     @apply bg-darkestGray ;
   }
   a {
-    @apply text-blue-600;
-    @apply underline
+    @apply font-[700];
+    @apply hover:underline;
   }
   button:focus,
   input:focus,
