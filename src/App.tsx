@@ -84,9 +84,10 @@ function App() {
         </OBSConnectionProvider>
       </main>
       <ToastContainer
-        position="top-right"
+        position="bottom-right"
         autoClose={false}
         transition={Slide}
+        newestOnTop={true}
       />
       <footer className="bg-lightGray  flex flex-row gap-x-[12px] px-[121px] pt-[16px]">
         <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/LICENSE.txt">
