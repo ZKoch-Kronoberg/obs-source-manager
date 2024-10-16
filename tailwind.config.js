@@ -35,6 +35,12 @@ module.exports = {
           ringWidth: ["focus"], // Enable ring width on focus
         },
       },
+      screens: {
+        smallMobile: "576px",
+        mobile: "768px",
+        tablet: "992px",
+        desktop: "1280px",
+      },
     },
   },
   plugins: [],
