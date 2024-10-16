@@ -14,7 +14,7 @@
   input:focus,
   textarea:focus,
   select:focus {
-    @apply outline-none ring-2 ring-customFocus; /* Custom styles for focus */
+    @apply outline-none outline-2 outline-customFocus outline-offset-4; /* Custom styles for focus */
   }
   h1 {
     @apply text-h1;
