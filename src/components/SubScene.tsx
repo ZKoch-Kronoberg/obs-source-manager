@@ -247,9 +247,9 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
   return (
     <li className="" aria-label={`Nested scene ${name}`}>
       <h2 className="text-white mb-[32px]">{name}</h2>
-      <div className="bg-darkGray border border-offwhite rounded-md px-[25px] py-[40px]">
+      <div className="bg-darkGray rounded-md px-[16px] tablet:px-[24px] py-[16px] mobile:py-[24px]">
         {sources ? (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-[16px] gap-y-1">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-[16px]">
             {sources.map((source) => (
               <Source
                 source={source}
@@ -259,11 +259,13 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
             ))}
           </ul>
         ) : null}
-        <h4 className="text-white text-p mt-[32px] mb-[16px]">Recording</h4>
-        <div className="flex flex-row flex-wrap space-x-[7px]">
+        <h4 className="text-white text-p mt-[24px] tablet:mt-[32px] mb-[16px]">
+          Recording
+        </h4>
+        <div className="flex flex-row flex-wrap gap-[16px]">
           <button
             disabled={isRecording}
-            className="disabled:cursor-not-allowed text-white bg-offblack rounded-full p-[12px]"
+            className="disabled:cursor-not-allowed text-white font-[700] bg-offblack rounded-full p-[12px]"
             onClick={() => SetAllSourcesEnabled(true)}
             aria-label={`Include all sources in ${name} in recording`}
           >
@@ -271,7 +273,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
           </button>
           <button
             disabled={isRecording}
-            className="disabled:cursor-not-allowed text-white border border-white rounded-full p-[12px]"
+            className="disabled:cursor-not-allowed text-white font-[700] border border-white rounded-full p-[12px]"
             onClick={() => SetAllSourcesEnabled(false)}
             aria-label={`Exclude all sources in ${name} fom recording`}
           >

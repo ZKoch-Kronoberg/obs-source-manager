@@ -50,9 +50,9 @@ function App() {
   return (
     <>
       <main className="w-full min-h-screen pt-[66px] flex flex-col">
-        <div className="flex justify-between items-center mx-[122px] mb-[32px] font-[400]">
+        <div className="flex flex-col items-start mobile:flex-row justify-between mx-[20px] tablet:mx-[122px] mb-[32px] font-[400]">
           <h1 className="text-h1 text-white">OBS Control panel</h1>
-          <div className="flex flex-row gap-x-[12px]">
+          <div className="flex flex-row gap-x-[8px] tablet:gap-x-[12px]">
             <button
               className="text-white font-[700] bg-purplishBlue rounded-full p-[12px]"
               onClick={openConnectionModal}
@@ -89,7 +89,7 @@ function App() {
         transition={Slide}
         newestOnTop={true}
       />
-      <footer className="bg-lightGray  flex flex-row gap-x-[12px] px-[121px] pt-[16px]">
+      <footer className="bg-lightGray  flex flex-row gap-x-[12px] px-[20px] tablet:px-[122px] pt-[16px]">
         <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/LICENSE.txt">
           License
         </a>
