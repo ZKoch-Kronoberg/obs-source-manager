@@ -246,7 +246,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
   //TODO: use flex basis to change number of columns with screen size.
   return (
     <li className="" aria-label={`Nested scene ${name}`}>
-      <h3 className="text-white mb-[32px]">{name}</h3>
+      <h2 className="text-white mb-[32px]">{name}</h2>
       <div className="bg-darkGray border border-offwhite rounded-md px-[25px] py-[40px]">
         {sources ? (
           <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-[16px] gap-y-1">
