@@ -249,7 +249,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
       <h2 className="text-white mb-[32px]">{name}</h2>
       <div className="bg-darkGray rounded-md px-[16px] py-[16px] tablet:px-[24px] tablet:py-[32px]">
         {sources ? (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-[16px]">
+          <ul className="grid grid-cols-1 smallMobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-6 gap-[16px]">
             {sources.map((source) => (
               <Source
                 source={source}
