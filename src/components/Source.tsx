@@ -65,10 +65,10 @@ const Source: FunctionComponent<SourceProps> = ({ source, setEnabled }) => {
         <div className="border-b-[1px] border-gray w-full px-[16px] py-[8px]">
           <span className="text-p">{source.sourceName}</span>
         </div>
-        <div className="p-[16px] h-[160px]">
+        <div className="flex items-center justify-center p-[16px] h-[160px]">
           {imageData ? (
             <img
-              className={`object-scale-down max-h-full max-w-full m-auto rounded-sm${
+              className={`object-scale-down max-h-full max-w-full rounded-sm${
                 !source.enabled ? " grayscale" : ""
               }`}
               src={`${imageData}`}
