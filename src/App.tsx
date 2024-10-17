@@ -50,7 +50,7 @@ function App() {
   return (
     <>
       <main className="w-full min-h-screen pt-[66px] flex flex-col">
-        <div className="flex flex-col items-start mobile:flex-row justify-between mx-[20px] tablet:mx-[122px] mb-[32px] font-[400]">
+        <div className="flex flex-col items-start mobile:flex-row mobile:items-center justify-between mx-[20px] tablet:mx-[122px] mb-[32px] font-[400] gap-y-[32px]">
           <h1 className="text-h1 text-white">OBS Control panel</h1>
           <div className="flex flex-row gap-x-[8px] tablet:gap-x-[12px]">
             <button
