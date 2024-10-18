@@ -35,10 +35,6 @@
     @apply text-p;
   }
 
-  button:disabled {
-    @apply bg-disabledGray;
-  }
-
   div.help-wrapper > h2 {
     @apply mb-[16px];
   }
@@ -60,5 +56,44 @@
 @layer utilities {
   .focus-custom {
     @apply ring-2 ring-blue-500 outline-none; 
+  }
+}
+
+@layer components{
+  button.btn {
+    @apply text-p font-[700] rounded-full px-[12px] py-[8px] tablet:py-[12px];
+  }
+  button.btn:disabled {
+    @apply cursor-not-allowed
+  }
+
+  button.btn-primary {
+    @apply bg-offblack text-white
+  }
+  button.btn-primary:hover {
+    @apply bg-btn-primary-hover
+  }
+  button.btn-primary:disabled {
+    @apply bg-btn-primary-disabled text-opacity-50
+  }
+  
+  button.btn-ghost {
+    @apply border border-white text-white
+  }
+  button.btn-ghost:hover {
+    @apply bg-btn-ghost-hover border-transparent
+  }
+  button.btn-ghost:disabled {
+    @apply border border-opacity-40 text-opacity-40
+  }
+  
+  button.btn-blue {
+    @apply bg-btn-blue-normal text-white
+  }
+  button.btn-blue:hover {
+    @apply bg-btn-blue-hover
+  }
+  button.btn-blue:disabled {
+    @apply bg-btn-blue-disabled text-opacity-50
   }
 }

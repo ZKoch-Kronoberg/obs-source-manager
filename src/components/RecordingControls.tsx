@@ -88,7 +88,7 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
         </div>
         {isRecording ? (
           <button
-            className="bg-offblack text-white font-[700] flex items-center justify-center gap-x-[12px] rounded-full p-[12px] mb-[16px] hover:bg-opacity-50"
+            className="btn btn-primary flex items-center justify-center gap-x-[12px]"
             onClick={stopRecording}
             aria-label="Stop recording"
             aria-describedby="recordingInfo"
@@ -100,7 +100,8 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
           </button>
         ) : (
           <button
-            className="bg-offblack text-white font-[700] flex items-center justify-center gap-x-[12px] rounded-full p-[12px] mb-[16px] hover:bg-opacity-50"
+            /* className="bg-offblack text-white font-[700] flex items-center justify-center gap-x-[12px] rounded-full p-[12px] mb-[16px] hover:bg-opacity-50" */
+            className="btn btn-primary flex items-center justify-center gap-x-[12px]"
             onClick={startRecording}
             aria-label="Start recording"
             aria-describedby="recordingInfo"

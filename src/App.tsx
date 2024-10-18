@@ -54,16 +54,10 @@ function App() {
           <div className="w-full max-w-[1200px] flex flex-col items-start mobile:flex-row mobile:items-center justify-between mb-[32px] font-[400] gap-y-[32px]">
             <h1 className="text-h1 text-white">OBS Control panel</h1>
             <div className="flex flex-row gap-x-[8px] tablet:gap-x-[12px]">
-              <button
-                className="text-white font-[700] bg-purplishBlue rounded-full p-[12px]"
-                onClick={openConnectionModal}
-              >
+              <button className="btn btn-blue" onClick={openConnectionModal}>
                 Open connection settings
               </button>
-              <button
-                className="text-white font-[700] rounded-full border border-white p-[12px]"
-                onClick={openHelpModal}
-              >
+              <button className="btn btn-ghost" onClick={openHelpModal}>
                 Help
               </button>
             </div>

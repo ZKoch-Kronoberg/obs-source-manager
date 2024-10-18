@@ -75,17 +75,13 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
           />
           <div className="flex flex-row mt-[24px] gap-x-[16px]">
             <button
-              className="bg-offblack text-white font-[700] rounded-full p-[12px]"
+              className="btn btn-primary"
               type="button"
               onClick={handleSave}
             >
               Save settings
             </button>
-            <button
-              className="text-white font-[700] border border-white rounded-full p-[12px]"
-              type="button"
-              onClick={onClose}
-            >
+            <button className="btn btn-ghost" type="button" onClick={onClose}>
               Close settings
             </button>
           </div>

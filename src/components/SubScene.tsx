@@ -265,7 +265,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
         <div className="flex flex-row flex-wrap gap-[16px]">
           <button
             disabled={isRecording}
-            className="disabled:cursor-not-allowed text-white font-[700] bg-offblack rounded-full p-[12px]"
+            className="btn btn-primary"
             onClick={() => SetAllSourcesEnabled(true)}
             aria-label={`Include all sources in ${name} in recording`}
           >
@@ -273,7 +273,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
           </button>
           <button
             disabled={isRecording}
-            className="disabled:cursor-not-allowed text-white font-[700] border border-white rounded-full p-[12px]"
+            className="btn btn-ghost"
             onClick={() => SetAllSourcesEnabled(false)}
             aria-label={`Exclude all sources in ${name} fom recording`}
           >
