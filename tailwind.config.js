@@ -10,9 +10,17 @@ module.exports = {
         gray: "#777676",
         offblack: "#141414",
         offwhite: "#FEFEFE",
-        purplishBlue: "#2961D1",
         customFocus: "#629CF8",
-        disabledGray: "#858585",
+        btn: {
+          primary: {
+            normal: "#141414",
+            disabled: "#FF0000",
+            hover: "#858585",
+          },
+        },
+
+        btnBlue: "#2961D1",
+        btnBlueHover: "#2154B9",
       },
       borderRadius: {
         sm: "10px",
