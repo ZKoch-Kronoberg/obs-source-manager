@@ -49,22 +49,24 @@ function App() {
 
   return (
     <>
-      <main className="w-full min-h-screen pt-[66px] flex flex-col">
-        <div className="flex flex-col items-start mobile:flex-row mobile:items-center justify-between mx-[20px] tablet:mx-[122px] mb-[32px] font-[400] gap-y-[32px]">
-          <h1 className="text-h1 text-white">OBS Control panel</h1>
-          <div className="flex flex-row gap-x-[8px] tablet:gap-x-[12px]">
-            <button
-              className="text-white font-[700] bg-purplishBlue rounded-full p-[12px]"
-              onClick={openConnectionModal}
-            >
-              Open connection settings
-            </button>
-            <button
-              className="text-white font-[700] rounded-full border border-white p-[12px]"
-              onClick={openHelpModal}
-            >
-              Help
-            </button>
+      <main className="w-full min-h-screen pt-[66px] flex flex-col items-center">
+        <div className="w-full px-[20px] flex flex-col items-center">
+          <div className="w-full max-w-[1200px] flex flex-col items-start mobile:flex-row mobile:items-center justify-between mb-[32px] font-[400] gap-y-[32px]">
+            <h1 className="text-h1 text-white">OBS Control panel</h1>
+            <div className="flex flex-row gap-x-[8px] tablet:gap-x-[12px]">
+              <button
+                className="text-white font-[700] bg-purplishBlue rounded-full p-[12px]"
+                onClick={openConnectionModal}
+              >
+                Open connection settings
+              </button>
+              <button
+                className="text-white font-[700] rounded-full border border-white p-[12px]"
+                onClick={openHelpModal}
+              >
+                Help
+              </button>
+            </div>
           </div>
         </div>
         <ConnectionModal
@@ -89,13 +91,15 @@ function App() {
         transition={Slide}
         newestOnTop={true}
       />
-      <footer className="bg-lightGray  flex flex-row gap-x-[12px] px-[20px] tablet:px-[122px] pt-[16px]">
-        <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/LICENSE.txt">
-          License
-        </a>
-        <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/oss-attribution/attribution.txt">
-          3rd party atributions
-        </a>
+      <footer className="bg-lightGray pt-[16px] flex flex-col items-center px-[20px]">
+        <div className="flex flex-row gap-x-[12px]  max-w-[1200px] w-full">
+          <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/LICENSE.txt">
+            License
+          </a>
+          <a href="https://raw.githubusercontent.com/ZKoch-Kronoberg/obs-source-manager/main/oss-attribution/attribution.txt">
+            3rd party atributions
+          </a>
+        </div>
       </footer>
     </>
   );

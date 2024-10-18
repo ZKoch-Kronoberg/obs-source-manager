@@ -78,42 +78,44 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
   }
 
   return (
-    <div className=" bg-lightGray rounded-t-lg px-[20px] tablet:px-[121px] pt-[32px] mt-auto">
-      <div className="text-h2 font-[700] mb-[16px]">
-        {isRecording ? "Recording is in progress" : "Not recording"}
+    <div className=" bg-lightGray rounded-t-lg w-full px-[20px] pt-[32px] flex flex-col mt-auto">
+      <div className="max-w-[1200px] w-full self-center">
+        <div className="text-h2 font-[700] mb-[16px]">
+          {isRecording ? "Recording is in progress" : "Not recording"}
+        </div>
+        <div role="timer" className="mb-[18px]">
+          {formatDuration(recordingDuration)}
+        </div>
+        {isRecording ? (
+          <button
+            className="bg-offblack text-white font-[700] flex items-center justify-center gap-x-[12px] rounded-full p-[12px] mb-[16px] hover:bg-opacity-50"
+            onClick={stopRecording}
+            aria-label="Stop recording"
+            aria-describedby="recordingInfo"
+          >
+            <span>Stop recording</span>
+            <span className="text-white text-[19px]" role="img">
+              ■
+            </span>
+          </button>
+        ) : (
+          <button
+            className="bg-offblack text-white font-[700] flex items-center justify-center gap-x-[12px] rounded-full p-[12px] mb-[16px] hover:bg-opacity-50"
+            onClick={startRecording}
+            aria-label="Start recording"
+            aria-describedby="recordingInfo"
+          >
+            <span>Start recording</span>
+            <span className="text-[#F00006] text-[19px]" role="img">
+              ⬤
+            </span>
+          </button>
+        )}
+        <p id="recordingInfo mb-[49px] text-[12px]">
+          Note: you will not be able to change which sources are being recorded
+          once a recording is in progress.
+        </p>
       </div>
-      <div role="timer" className="mb-[18px]">
-        {formatDuration(recordingDuration)}
-      </div>
-      {isRecording ? (
-        <button
-          className="bg-offblack text-white font-[700] flex items-center justify-center gap-x-[12px] rounded-full p-[12px] mb-[16px]"
-          onClick={stopRecording}
-          aria-label="Stop recording"
-          aria-describedby="recordingInfo"
-        >
-          <span>Stop recording</span>
-          <span className="text-white text-[19px]" role="img">
-            ■
-          </span>
-        </button>
-      ) : (
-        <button
-          className="bg-offblack text-white font-[700] flex items-center justify-center gap-x-[12px] rounded-full p-[12px] mb-[16px]"
-          onClick={startRecording}
-          aria-label="Start recording"
-          aria-describedby="recordingInfo"
-        >
-          <span>Start recording</span>
-          <span className="text-[#F00006] text-[19px]" role="img">
-            ⬤
-          </span>
-        </button>
-      )}
-      <p id="recordingInfo mb-[49px] text-[12px]">
-        Note: you will not be able to change which sources are being recorded
-        once a recording is in progress.
-      </p>
     </div>
   );
 };
