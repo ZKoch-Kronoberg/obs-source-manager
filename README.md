@@ -1,6 +1,6 @@
-# obs-source-manager
+# OBS Source Manager
 
-react-based UI that lets you easily select sources based on the groups in and then record separate files for each selected source.
+OBS Source Manager is a react-based UI designed to make simultaneously recording several video sources to separate files with OBS simple and approachable even for less technical users. The way the the source manager works places some requirements on the structure of the scene collection, but most setups should be compatible with it. Once a scene collection has been set up the source manager can be used to select sources and start/stop recordings without having to actually touch OBS at all. 
 
 [https://www.npmjs.com/package/oss-attribution-generator/v/1.5.0](https://www.npmjs.com/package/oss-attribution-generator/v/1.5.0) is used to generate attribution information
 
