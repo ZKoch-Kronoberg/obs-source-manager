@@ -48,3 +48,15 @@ You can make an optimized build that's ready for web deployment you can run
 npm run build
 ```
 This puts the files in the build folder which you can then deploy like normal.
+
+### Setting up OBS
+
+Some first-time setup will be needed in OBS before it can be used by the source manager.
+
+1. Enable OBS' WebSocket server. Make sure to set a password and enable authentication before enabling websocket if you want that protection.
+2. Create/modify your scene collection to follow the required structure or import an already configured one from a file.
+
+Detailed instructions for both of these steps can be found in the in-app help section.
+
+### Using the interface
+
