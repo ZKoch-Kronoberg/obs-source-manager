@@ -25,3 +25,26 @@ You will then be able to start a development preview with
 ```bash
 npm start
 ```
+and check that everything works.
+
+## Usage
+
+You can use the source manager from the development preview or from a build.
+
+### Making a local build
+
+You can create an optimized that you can use locally by using
+```bash
+PUBLIC_URL=. npm run build
+```
+This will put all the needed files in the build directory. You can launch the app by opening the produced index.html file in a browser.
+
+A local build has the advantage of working without an internet connection, and could "installed" on computers at same time OBS is being installed. 
+
+### Making a build for web deployment
+
+You can make an optimized build that's ready for web deployment you can run
+```bash
+npm run build
+```
+This puts the files in the build folder which you can then deploy like normal.
