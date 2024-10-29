@@ -60,3 +60,16 @@ Detailed instructions for both of these steps can be found in the in-app help se
 
 ### Using the interface
 
+1. Make sure you have opened OBS and selected your master scene.
+2. Open the source manager. It will automatically try to connect to OBS without a password incase you did not feel the need to set one. If you have set a password you'll see one or two errors from the source manager trying and failing to connect without one.
+3. If the source manager could not automatically connect to OBS you will have to manually enter the password. Open the source manager's connection settings, enter your password, save, and close the modal. If everything went right you should get  messages saying you connected and your master scene was read. Your video sources should also be displayed in the UI.
+4. Enable all the Video sources you want to record and disable the ones you don't want to record.
+5. Start a recording with the start/stop recording button at the bottom of the source manager (or from the OBS's interface it will do exactly the same thing).   
+6. End the recording with the same button you used to start it once you're done. **Your video files may be lost if you do not remember to end the recording before shutting down OBS, depending on your output settings.**
+ 
+### Launch script (optional)
+
+A basic automation script will let you launch both OBS and the source manager from one place while also making it easy to set launch parameters that give you more control over OBS' behaviour once launched. This repo has [an example of such a script](launch.bat) that:
+1. Launches OBS to a minimized window with a specific scene collection and scene selected, with the warning message about OBS not closing correctly disabled since the Source Record plugin seems to interfere with that a lot of the time, and the update prompt disabled since I don't know if the compatability issues with Source Record are present on the latest version of OBS or not.
+2. Waits 5 seconds to give OBS time to start fully.
+3. Opens a local built of the source manager in the OS' default browser.
