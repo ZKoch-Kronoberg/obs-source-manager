@@ -11,7 +11,7 @@ OBS Source Manager is a react-based UI designed to make simultaneously recording
 ### Requirements
 
   * Node.js and npm, available from [their website](https://nodejs.org/en). 
-  * OBS with with the plugins obs-websocket and [Source Record](https://obsproject.com/forum/resources/source-record.1285/). Some versions of OBS have compatability issues with the Source Record plugin. So far I only know that it works on [OBS 30.0.0](https://github.com/obsproject/obs-studio/releases/tag/30.0.0) and does not work on OBS 30.2.3. OBS versions after and including 28.0.0 come with obs-websocket already installed by default.
+  * OBS with with the plugins [obs-websocket](https://github.com/obsproject/obs-websocket) and [Source Record](https://obsproject.com/forum/resources/source-record.1285/). Some versions of OBS have compatability issues with the Source Record plugin. So far I only know that it works on [OBS 30.0.0](https://github.com/obsproject/obs-studio/releases/tag/30.0.0) and does not work on OBS 30.2.3. OBS versions after and including 28.0.0 come with obs-websocket already installed by default.
 
 ### Instructions
 
@@ -69,7 +69,16 @@ Detailed instructions for both of these steps can be found in the in-app help se
  
 ### Launch script (optional)
 
-A basic automation script will let you launch both OBS and the source manager from one place while also making it easy to set launch parameters that give you more control over OBS' behaviour once launched. This repo has [an example of such a script](launch.bat) that:
+A basic automation script will let you launch both OBS and the source manager from one place while also making it easy to set launch parameters that give you more control over OBS' behaviour once launched. This repo has [an example of a launch](launch.bat) that:
 1. Launches OBS to a minimized window with a specific scene collection and scene selected, with the warning message about OBS not closing correctly disabled since the Source Record plugin seems to interfere with that a lot of the time, and the update prompt disabled since I don't know if the compatability issues with Source Record are present on the latest version of OBS or not.
 2. Waits 5 seconds to give OBS time to start fully.
-3. Opens a local built of the source manager in the OS' default browser.
+3. Opens a local build of the source manager in the OS' default browser.
+
+## Acknowledgments
+* **[OBS Studio](https://github.com/obsproject/obs-studio)** - Free and open source recording and streaming software.
+* **[obs-websocket](https://github.com/obsproject/obs-websocket) and the [Source Record plugin](https://obsproject.com/forum/resources/source-record.1285/)** - Adds functionality to OBS Studio that this project wouldn't be possible without.
+* **UI and UX design help** - The current look of the interface was designed by a coworker that prefers to be left anonymous. Their redesigned interface is both more user-friendly and way nicer looking than anything I could design on my own.
+* **[tailwindcss](https://github.com/tailwindlabs/tailwindcss)** - Used for all of the project's styling. 
+* **[obs-websocket-js](https://github.com/obs-websocket-community-projects/obs-websocket-js)** - JavaScript API that the source manager does all its connection with OBS Studio through.
+* **[oss-attribution-generator](https://github.com/zumwald/oss-attribution-generator)** - The utility script I use to compile all of the third party licenses to a file.
+* **[gh-pages](https://github.com/tschaub/gh-pages)** - Makes it convenient to deploy the project to github pages.
