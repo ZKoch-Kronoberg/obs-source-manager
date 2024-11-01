@@ -74,7 +74,7 @@ const SceneView: FunctionComponent<SceneViewProps> = () => {
         <div className="w-full px-[20px] flex flex-col">
           <div className="max-w-[1200px] w-full self-center mb-[32px]">
             {/* <h2 className="text-2xl mb-2">Master Scene: {masterScene.name}</h2> */}
-            <ul className="space-y-[32px]" aria-label="Nested scenes list">
+            <ul className="space-y-[48px]" aria-label="Nested scenes list">
               {masterScene.subSceneNames.map((subSceneName) => (
                 <SubScene name={subSceneName} key={subSceneName}></SubScene>
               ))}
