@@ -82,3 +82,10 @@ A basic automation script will let you launch both OBS and the source manager fr
 * **[obs-websocket-js](https://github.com/obs-websocket-community-projects/obs-websocket-js)** - JavaScript API that the source manager does all its connection with OBS Studio through.
 * **[oss-attribution-generator](https://github.com/zumwald/oss-attribution-generator)** - The utility script I use to compile all of the third party licenses to a file.
 * **[gh-pages](https://github.com/tschaub/gh-pages)** - Makes it convenient to deploy the project to github pages.
+
+# Contributing
+
+Bug reports, suggestions, and code contributions are greatly appreciated. Before submitting code, please check and format it with **ESLint** and **Prettier** to ensure consistency across the project. If you need any help with contributing, feel free to contact me or open an issue.
+
+# Support
+If you have any questions or need assistance setting the source manager, please reach out through the GitHub issue tracker by creating a new issue tagged "Support."
