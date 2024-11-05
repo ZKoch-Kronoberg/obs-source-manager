@@ -61,3 +61,12 @@ Open the Command Prompt/Terminal like in the step for verifying your Node instal
 
 If you only see a folder named obs-source-manager-main it means that the folder we wanted got placed inside a folder when getting extracted. In that case you should move all the files inside the inner folder up one level and then repeat the steps to navigate into the folder and confirm that you are in the correct folder.
 
+When you've confirmed that you're in the correct folder you first need to use
+
+```bash
+npm install
+```
+
+This will download varius pieces of code that are used in this project but were not made for it. everything that this downloads will be put in the node_modules folder that the command creates inside your extracted folder. Nothing gets installed anywhere else on your computer.
+
+npm will likely inform you of a couple known vulnerabilities in the downloaded packages.
