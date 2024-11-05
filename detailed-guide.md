@@ -24,7 +24,7 @@ Once the installer is done the command prompt will open if you are using Windows
 Click on the window and press any key to start the installation and then wait while it does its thing. You may get a popup asking if you want Windows PowerShell to make changes to your devices, which you should say yes to.
 
 ### Verifying your installation
-open your command prompt by searching for "cmd" in the Windows search bar if you are on Windows or open your terminal by pressing the command key (⌘) and spacebar at the same time to open Spotlight and searching for "terminal".
+open your command prompt by searching for "cmd" in the Windows search bar if you are on Windows or open your terminal by pressing the command key (⌘) and spacebar at the same time to open Spotlight and searching for "terminal" if you are on MacOS.
 
 ![image](https://github.com/user-attachments/assets/b05a679c-4e92-4420-8652-03e4b968dd54)
 
@@ -50,4 +50,14 @@ MacOS users should first check if they have a Apple Silicon (M1/M2) or Intel pro
 
 Once you have downloaded the correct file for your computer locate it and run it in the same way as you did the Node.js to start the installation There's nothing particular that you need to do when installing OBS other than maybe giving it permissions to install like any other app, but when OBS Studio launches for the first time MacOS users will be asked to grant App permissions, and then users of either OS will be shown the auto-configuration wizard. Select Optimise just for recording on the first step. You can leave the rest unchanged 
 
+## Making a local build of the source manager
+Go to the [main page for this project](https://github.com/ZKoch-Kronoberg/obs-source-manager/tree/main) and click on the green "<> Code" button and then Download ZIP. Locate the downloaded .zip file on your computer and unzip it by right clicking and selecting "Extract all..." if you are on Windows 10/11 or by double clicking it if you are on MacOS. You can move the .zip file and the extracted folder anywhere you want on your computer.
+
+![image](https://github.com/user-attachments/assets/cd49629a-92dc-4cb8-b29f-b4702eeeaad6)
+
+Open the Command Prompt/Terminal like in the step for verifying your Node installation. If you are on Windows and the drive letter at the start of the line you type on is not the same as the storage device the extracted folder is stored in you will need to change to the correct storage device by typing "X:", where X is the letter corresponding to the storage device you want to switch to ("D:" for example) and hitting enter before proceeding. Type "cd " (note the space), then drag and drop the extracted folder onto the Command Prompt/Terminal window and hit enter to navigate it into the extracted folder. You can confirm that you are are in the correct folder by entering "dir" into the Command Prompt on Windows or "ls" into the Terminal on MacOS. You should see several files like this:
+
+![image](https://github.com/user-attachments/assets/7c4e36bc-18f8-4d9b-a2c3-a4af536f35f0)
+
+If you only see a folder named obs-source-manager-main it means that the folder we wanted got placed inside a folder when getting extracted. In that case you should move all the files inside the inner folder up one level and then repeat the steps to navigate into the folder and confirm that you are in the correct folder.
 
