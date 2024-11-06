@@ -67,6 +67,31 @@ When you've confirmed that you're in the correct folder you first need to use
 npm install
 ```
 
-This will download varius pieces of code that are used in this project but were not made for it. everything that this downloads will be put in the node_modules folder that the command creates inside your extracted folder. Nothing gets installed anywhere else on your computer.
+This will download varius pieces of code that are used in this project but were not made for it. everything that this downloads will be put in the node_modules folder that the command creates inside your extracted folder. Nothing gets installed anywhere else on your computer. npm will likely inform you of a couple known vulnerabilities in the downloaded packages.
 
-npm will likely inform you of a couple known vulnerabilities in the downloaded packages.
+Once you have used "npm install" you can use
+
+```bash
+set PUBLIC_URL=.
+```
+followed by
+```bash
+ npm run build
+```
+if you are on Windows or
+```bash
+ PUBLIC_URL=. npm run build
+```
+if you are on MacOS
+
+![image](https://github.com/user-attachments/assets/e5b5387e-0a96-467b-8dee-28983fdb6395)
+
+This will go through all of the code files inside the folder and turn them into a usable web page, putting all the files it needs in the "build" folder that the command creates.
+
+Once the command finishes you can confirm that the build was made correctly by opening the "build" folder and double clicking on the file "index.hmtl" to open the source manager in the browser.
+
+![image](https://github.com/user-attachments/assets/deda0066-01e8-4863-9857-1a867e0ff327)
+
+If the page looks like expected and there is only a single error message saying "Failed to connect to OBS:Your payload's data is missing an `authentication` string, however authentication is required." the build was probably made correctly.
+
+## Setting up OBS
