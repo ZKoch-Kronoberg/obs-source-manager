@@ -48,10 +48,13 @@ Windows users should download "OBS-Studio-30.0-Full-Installer-x64.exe".
 
 MacOS users should first check if they have a Apple Silicon (M1/M2) or Intel processor by clicking on the Apple menu and selecting "About This Mac" and looking at the Processor/Chip section under the Overview tab. If it says something like "Apple M1", "Apple M2", "M1 Pro", "M2 Max" etc, you should download "OBS-Studio-30.0.0-macOS-Apple.dmg". If it mentions intel anywhere you should download "OBS-Studio-30.0.0-macOS-Apple.dmg".
 
-Once you have downloaded the correct file for your computer locate it and run it in the same way as you did the Node.js to start the installation There's nothing particular that you need to do when installing OBS other than maybe giving it permissions to install like any other app, but when OBS Studio launches for the first time MacOS users will be asked to grant App permissions, and then users of either OS will be shown the auto-configuration wizard. Select Optimise just for recording on the first step. You can leave the rest unchanged 
+Once you have downloaded the correct file for your computer locate it and run it in the same way as you did the Node.js to start the installation There's nothing particular that you need to do when installing OBS other than maybe giving it permissions to install like any other app, but when OBS Studio launches for the first time MacOS users will be asked to grant App permissions, and then users of either OS will be shown the auto-configuration wizard. Select Optimise just for recording on the first step. You can leave the rest unchanged
+
+### Installing the Source Record plugin
+Go to the [plugin's official page](https://obsproject.com/forum/resources/source-record.1285/) and click on the download link. Windows users should download "source-record-0.3.5-windows-installer.zip" (or a newer version if that has been released), locate the downloaded .zip file on their computer and unzip it by right clicking it and selecting "Extract all...", and then run the extracted installation program. MacOS users should download "source-record-0.3.5-macos.zip" (or a newer version if that has been released) and then follow this [tutorial](https://youtu.be/9yaoLYUyPpg?si=CzNhCYc5UjPcqoUp&t=54)
 
 ## Making a local build of the source manager
-Go to the [main page for this project](https://github.com/ZKoch-Kronoberg/obs-source-manager/tree/main) and click on the green "<> Code" button and then Download ZIP. Locate the downloaded .zip file on your computer and unzip it by right clicking and selecting "Extract all..." if you are on Windows 10/11 or by double clicking it if you are on MacOS. You can move the .zip file and the extracted folder anywhere you want on your computer.
+Go to the [main page for this project](https://github.com/ZKoch-Kronoberg/obs-source-manager/tree/main) and click on the green "<> Code" button and then "Download ZIP". Locate the downloaded .zip file on your computer and unzip it by right clicking and selecting "Extract all..." if you are on Windows 10/11 or by double clicking it if you are on MacOS. You can move the .zip file and the extracted folder anywhere you want on your computer.
 
 ![image](https://github.com/user-attachments/assets/cd49629a-92dc-4cb8-b29f-b4702eeeaad6)
 
@@ -95,3 +98,8 @@ Once the command finishes you can confirm that the build was made correctly by o
 If the page looks like expected and there is only a single error message saying "Failed to connect to OBS:Your payload's data is missing an `authentication` string, however authentication is required." the build was probably made correctly.
 
 ## Setting up OBS
+
+You will need to set up an OBS Scene Collection structured in the way that the source manager expects 
+
+### Creating a scene collection from scratch
+Open OBS Studio and press the "New" button under the "Scene Collection" section of the top menu to create the scene collection your setup will be contained in.
