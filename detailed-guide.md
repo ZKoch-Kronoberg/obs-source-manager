@@ -70,7 +70,9 @@ When you've confirmed that you're in the correct folder you first need to use
 npm install
 ```
 
-This will download varius pieces of code that are used in this project but were not made for it. everything that this downloads will be put in the node_modules folder that the command creates inside your extracted folder. Nothing gets installed anywhere else on your computer. npm will likely inform you of a couple known vulnerabilities in the downloaded packages.
+This will download varius pieces of code that are used in this project but were not made for it. everything that this downloads will be put in the node_modules folder that the command creates inside your extracted folder. Nothing gets installed anywhere else on your computer. 
+
+npm will likely inform you of a couple known vulnerabilities in the downloaded packages. I am aware of this and have investigated the ones present ([Inefficient Regular Expression Complexity in nth-check](https://github.com/advisories/GHSA-rp65-9cf3-cjxr, [PostCSS line return parsing error](https://github.com/advisories/GHSA-7fh5-64p2-3v2j) at the time of writing (2024-11-06). These vulnerabilities should not pose a risk to this project as far as I can tell, but new vulnerabilities could be discovered at any time and it is therefore best to use "npm audit report" to check if any new vulnerabilities have been discovered and either do your own research or consult with someone that can if you are concerned
 
 Once you have used "npm install" you can use
 
@@ -99,7 +101,8 @@ If the page looks like expected and there is only a single error message saying 
 
 ## Setting up OBS
 
-You will need to set up an OBS Scene Collection structured in the way that the source manager expects 
+You will need to set up a OBS Scene Collection structured in the way that the source manager expects and enable OBS' websocket server for the source manager to be able to connect to OBS properly, read the source manager's in-app help text for details.
 
-### Creating a scene collection from scratch
-Open OBS Studio and press the "New" button under the "Scene Collection" section of the top menu to create the scene collection your setup will be contained in.
+## Support
+
+If you encounter any problems that you are not able to solve after consulting this guide, [the project's readme file](README.md), the source-manager's in-app help text, and the internet you can [leave an issue](https://github.com/ZKoch-Kronoberg/obs-source-manager/issues/new) with the "Support" label describing your problem and I will try to get back to you when I am available
