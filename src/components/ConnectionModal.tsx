@@ -1,6 +1,6 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import Modal from "react-modal";
-import { X } from "react-feather";
+import { X, Check } from "react-feather";
 
 interface ConnectionModalProps {
   isOpen: boolean;
@@ -16,10 +16,36 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
   //why did I use state here?
   const [wsPort, setWsPort] = useState<string>("4455");
   const [password, setPassword] = useState<string>("");
+  const [remember, setRemember] = useState(false);
 
   function handleSave() {
+    //save connection info to localstorage if remember info box is checked
+    if (remember) {
+      console.log("Saving connection info");
+      localStorage.setItem(
+        "connectionInfo",
+        JSON.stringify({ port: wsPort, password: password })
+      );
+    } else {
+      //delete saved info if not
+      console.log("deleting saved connection info");
+      localStorage.removeItem("connectionInfo");
+    }
+
     callback(wsPort, password);
   }
+
+  //pupulate with remembered connection info when component loads
+  useEffect(() => {
+    const rememberedInfo = localStorage.getItem("connectionInfo");
+    if (rememberedInfo) {
+      setWsPort(JSON.parse(rememberedInfo).port);
+      setPassword(JSON.parse(rememberedInfo).password);
+      setRemember(true);
+    } else {
+      setRemember(false);
+    }
+  }, []);
 
   Modal.setAppElement("#root");
   return (
@@ -73,6 +99,21 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter OBS websocket password"
           />
+          <div className="flex flex-row mt-[18px] gap-x-1 items-center">
+            <div className="relative h-[18px] w-[18px]">
+              <input
+                className="peer appearance-none border-2 rounded-[4px] h-[18px] w-[18px] border-white"
+                type="checkbox"
+                defaultChecked={remember}
+                id="remember"
+                onClick={() => setRemember(!remember)}
+              />
+              <Check className="absolute inset-0 hidden peer-checked:block pointer-events-none stroke-white h-[18px] w-[18px]" />
+            </div>
+            <label className="text-white text-[12px]" htmlFor="remember">
+              Remember connection info
+            </label>
+          </div>
           <div className="flex flex-row mt-[24px] gap-x-[16px]">
             <button
               className="btn btn-primary"
