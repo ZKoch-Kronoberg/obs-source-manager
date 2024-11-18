@@ -247,7 +247,7 @@ const SubScene: FunctionComponent<SubSceneProps> = ({ name }) => {
   return (
     <li aria-label={`Nested scene ${name}`}>
       <h2 className="text-white mb-[16px]">{name}</h2>
-      <div className="bg-darkGray rounded-md px-[16px] py-[16px] tablet:px-[24px] tablet:py-[32px]">
+      <div className="bg-bluishGray rounded-md px-[16px] py-[16px] tablet:px-[24px] tablet:py-[32px]">
         {sources ? (
           <ul className="grid grid-cols-1 smallMobile:grid-cols-2 laptop:grid-cols-4 desktop:grid-cols-4 gap-[16px]">
             {sources.map((source) => (

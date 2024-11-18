@@ -19,7 +19,7 @@ const HelpModal: FunctionComponent<HelpModalProps> = ({ isOpen, onClose }) => {
       shouldCloseOnEsc={true}
       onAfterOpen={() => (document.body.style.overflow = "hidden")}
       onAfterClose={() => (document.body.style.overflow = "unset")}
-      className="bg-gray rounded-md max-w-[600px] min-h-[475px] mx-auto mt-[32px] p-[32px]"
+      className="bg-bluishGray rounded-md max-w-[600px] min-h-[475px] mx-auto mt-[32px] p-[32px]"
       overlayClassName="fixed inset-0 bg-black bg-opacity-50 overflow-auto px-[20px]"
     >
       <div className="help-wrapper relative">

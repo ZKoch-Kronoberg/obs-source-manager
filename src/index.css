@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-darkestGray ;
+    @apply bg-darkBlue;
   }
   a {
     @apply font-[700];
