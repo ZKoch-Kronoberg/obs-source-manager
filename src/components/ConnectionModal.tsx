@@ -33,6 +33,7 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
     }
 
     callback(wsPort, password);
+    onClose();
   }
 
   //pupulate with remembered connection info when component loads
@@ -70,7 +71,13 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
           <X></X>
         </button>
         <h2 className="text-white text-h2 font-[700] mb-[16px]">Connect</h2>
-        <form className="flex flex-col">
+        <form
+          className="flex flex-col"
+          onSubmit={(event) => {
+            event.preventDefault();
+            handleSave();
+          }}
+        >
           <label
             className="text-white text-p mt-[16px] mb-[8px]"
             htmlFor="wsURL"
@@ -117,7 +124,7 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
           <div className="flex flex-row mt-[24px] gap-x-[16px]">
             <button
               className="btn btn-primary"
-              type="button"
+              type="submit"
               onClick={handleSave}
             >
               Connect
