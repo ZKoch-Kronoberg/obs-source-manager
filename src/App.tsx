@@ -14,10 +14,9 @@ function App() {
   //connection info
   /*TODO: figure out why exactly the app instantly tries to connec on its own
           I think it's something with OBSConnectionContext*/
-  const [connectionInfo, setConnectionInfo] = useState<ConnectionInfo>({
-    url: "ws://localhost:4455",
-    password: "",
-  });
+  const [connectionInfo, setConnectionInfo] = useState<ConnectionInfo>(
+    getInitialConnectionInfo()
+  );
   const HandleConnectionInfoSave = useCallback(
     (wsPort: string, wsPassword: string) => {
       setConnectionInfo({
@@ -27,6 +26,27 @@ function App() {
     },
     []
   );
+
+  function getInitialConnectionInfo() {
+    const savedConnectionInfo = localStorage.getItem("connectionInfo");
+    console.log("savedConnectionInfo:", savedConnectionInfo);
+
+    if (savedConnectionInfo !== null) {
+      console.info("foo!");
+
+      const port = JSON.parse(savedConnectionInfo).port;
+      const password = JSON.parse(savedConnectionInfo).password;
+
+      console.log(port, password);
+
+      return { url: `ws:///localhost:${port}`, password: password };
+    } else {
+      return {
+        url: "ws://localhost:4455",
+        password: "",
+      };
+    }
+  }
 
   //connection modal openness
   const [connectionModalIsOpen, setConnectionModalIsOpen] =
@@ -38,7 +58,7 @@ function App() {
     setConnectionModalIsOpen(false);
   }
 
-  // modal openness
+  //modal openness
   const [helpModalIsOpen, setHelpModalIsOpen] = useState<boolean>(false);
   function openHelpModal() {
     setHelpModalIsOpen(true);

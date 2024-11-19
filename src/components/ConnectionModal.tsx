@@ -120,7 +120,7 @@ const ConnectionModal: FunctionComponent<ConnectionModalProps> = ({
               type="button"
               onClick={handleSave}
             >
-              Save settings
+              Connect
             </button>
             <button className="btn btn-ghost" type="button" onClick={onClose}>
               Close settings
