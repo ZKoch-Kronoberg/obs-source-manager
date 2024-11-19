@@ -29,16 +29,10 @@ function App() {
 
   function getInitialConnectionInfo() {
     const savedConnectionInfo = localStorage.getItem("connectionInfo");
-    console.log("savedConnectionInfo:", savedConnectionInfo);
 
     if (savedConnectionInfo !== null) {
-      console.info("foo!");
-
       const port = JSON.parse(savedConnectionInfo).port;
       const password = JSON.parse(savedConnectionInfo).password;
-
-      console.log(port, password);
-
       return { url: `ws:///localhost:${port}`, password: password };
     } else {
       return {
