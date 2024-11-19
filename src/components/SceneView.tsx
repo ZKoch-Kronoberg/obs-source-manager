@@ -38,7 +38,9 @@ const SceneView: FunctionComponent<SceneViewProps> = () => {
         //console.log("contents:", contents);
         //filter to only the sceneItems that are a scene source
         const subScenes = contents.sceneItems.filter(
-          (sceneItem) => (sceneItem.sourceType = "OBS_SOURCE_TYPE_SCENE")
+          (sceneItem) =>
+            sceneItem.sourceType == "OBS_SOURCE_TYPE_SCENE" &&
+            sceneItem.sceneItemEnabled === true
         );
         //console.log("subScenes:", subScenes);
         if (subScenes.length < 1) {
