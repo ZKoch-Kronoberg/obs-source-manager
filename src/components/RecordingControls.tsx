@@ -83,7 +83,7 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
         <div className="text-h2 font-[700] mb-[16px]">
           {isRecording ? "Recording is in progress" : "Not recording"}
         </div>
-        <div role="timer" className="mb-[18px]">
+        <div role="timer" className="mb-[16px] text-h2">
           {formatDuration(recordingDuration)}
         </div>
         {isRecording ? (
@@ -93,8 +93,8 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
             aria-label="Stop recording"
             aria-describedby="recordingInfo"
           >
-            <span>Stop recording</span>
-            <span className="text-white text-[19px]" role="img">
+            <span className="text-[20px]">Stop recording</span>
+            <span className="text-white text-[24px]" role="img">
               ■
             </span>
           </button>
@@ -106,13 +106,13 @@ const RecordingControls: FunctionComponent<RecordingControlsProps> = () => {
             aria-label="Start recording"
             aria-describedby="recordingInfo"
           >
-            <span>Start recording</span>
-            <span className="text-[#F00006] text-[19px]" role="img">
+            <span className="text-[20px]">Start recording</span>
+            <span className="text-[#F00006] text-[24px]" role="img">
               ⬤
             </span>
           </button>
         )}
-        <p id="recordingInfo mb-[49px] text-[12px]">
+        <p id="recordingInfo" className="mt-[16px] mb-[45px] text-[12px]">
           Note: you will not be able to change which sources are being recorded
           once a recording is in progress.
         </p>
