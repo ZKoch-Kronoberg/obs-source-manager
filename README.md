@@ -6,7 +6,7 @@ OBS Source Manager is a react-based UI designed to make simultaneously recording
 
 ## Installation
 
-⚠️**Note**: The following instructions are aimed towards people already familiar with Node.js, npm, and React to keep this section concise. [A Detailed guide](detailed-guide.md) that can hopefully be followed without any prior knowledge will be added soon.
+⚠️**Note**: The following instructions are aimed towards people already familiar with Node.js, npm, and React to keep this section concise. [A Detailed guide](detailed-guide.md) that can hopefully be followed without any prior knowledge is also available.
 
 ### Requirements
 
